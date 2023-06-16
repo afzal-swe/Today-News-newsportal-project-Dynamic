@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+//__ Categories Page Route __//
+Route::middleware(['auth'])->group(function () {
+
+    Route::controller(CategoryController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/category', 'index')->name('category.index');
+    });
+});
+
 
 require __DIR__ . '/auth.php';
