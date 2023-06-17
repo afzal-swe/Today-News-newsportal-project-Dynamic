@@ -79,6 +79,8 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(SubdistrictController::class)->group(function () {
         // Backend Route ///
         Route::get('/subdistrict', 'index')->name('subdistrict.index');
+        Route::post('/subdistrict/store', 'store')->name('district.store');
+        Route::get('/subdistrict/destroy/{id}', 'destroy')->name('district.destroy');
     });
 });
 

@@ -106,7 +106,7 @@ Category Added Modal
                         </div>
                         <div class="form-group">
                             <label for="">Choose Category</label>
-                            <select name="category_id" id="" class="form-control @error('category_id') is-invalid @enderror "" required>
+                            <select name="category_id" id="" class="form-control @error('category_id') is-invalid @enderror" required>
                                 <option value="" disabled selected>==chose one==</option>
                                 @foreach ($category as $row)
                                     <option value="{{ $row->id }}">{{ $row->category_en}} | {{ $row->category_bn}}</option>
