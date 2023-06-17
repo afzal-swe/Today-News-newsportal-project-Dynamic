@@ -80,6 +80,8 @@ Route::middleware(['auth'])->group(function () {
         // Backend Route ///
         Route::get('/subdistrict', 'index')->name('subdistrict.index');
         Route::post('/subdistrict/store', 'store')->name('district.store');
+        Route::get('/subdistrict/edit/{id}', 'edit')->name('district.edit');
+        Route::post('/subdistrict/update/{id}', 'update')->name('subdistrict.update');
         Route::get('/subdistrict/destroy/{id}', 'destroy')->name('district.destroy');
     });
 });

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Subdistrict;
 use App\Models\District;
-use App\Models\Subcategory;
+
 use Illuminate\Support\Facades\DB;
 
 class SubdistrictController extends Controller
@@ -42,6 +42,34 @@ class SubdistrictController extends Controller
         return redirect()->back()->with($notification);
     }
     // End Sub-District Store
+
+
+    // __Edit Sub-District Manage Function__ //
+    public function edit($id)
+    {
+        $subdistrict = Subdistrict::find($id);
+        $destrict = District::all();
+
+        return view('admin.subdistrict_section.edit', compact('subdistrict', 'destrict'));
+    }
+    // End Sub-District edit
+
+
+    // __Update Sub-District Manage Function__ //
+    public function update(Request $request)
+    {
+        $update = $request->id;
+
+        Subdistrict::findOrFail($update)->update([
+            'district_id' => $request->district_id,
+            'subdistrict_bn' => $request->subdistrict_bn,
+            'subdistrict_en' => $request->subdistrict_en,
+        ]);
+
+        $notification = array('messege' => 'Subcategory Update Successfully !', 'alert-type' => "success");
+        return redirect()->route('subdistrict.index')->with($notification);
+    }
+    // End Sub-District Update
 
 
     // __Delete Sub-District Manage Function__ //
