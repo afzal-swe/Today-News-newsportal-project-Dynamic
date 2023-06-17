@@ -51,7 +51,7 @@
                                         <td>{{ $row->district_bn }}</td>
                                         <td>{{ $row->district_en }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('district.edit',$row->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('district.destroy',$row->id) }}" id="delete" class="btn btn-danger sm delete" title="Delete Data"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>

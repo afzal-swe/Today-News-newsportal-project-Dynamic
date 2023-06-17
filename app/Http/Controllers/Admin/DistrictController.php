@@ -42,6 +42,37 @@ class DistrictController extends Controller
     // End District Store
 
 
+
+    // __Edit District Manage Function__ //
+    public function edit($id)
+    {
+        $edit = District::find($id);
+
+        return view('admin.district_section.edit', compact('edit'));
+    }
+    // End District edit
+
+
+    // __Update District Manage Function__ //
+    public function update(Request $request)
+    {
+        $request->validate([
+            'district_bn' => 'required|unique:districts|max:55',
+            'district_en' => 'required|unique:districts|max:55',
+        ]);
+
+        $update = $request->id;
+
+        District::findOrFail($update)->update([
+            'district_bn' => $request->district_bn,
+            'district_en' => $request->district_en,
+        ]);
+        $notification = array('messege' => 'Update District Successfully !', 'alert-type' => "success");
+        return redirect()->route('district.index')->with($notification);
+    }
+    // End District Update
+
+
     // __ Delete Manage Function__ //
     public function destroy($id)
     {

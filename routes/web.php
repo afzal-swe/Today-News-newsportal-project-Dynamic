@@ -67,6 +67,8 @@ Route::middleware(['auth'])->group(function () {
         // Backend Route ///
         Route::get('/district', 'index')->name('district.index');
         Route::post('/district/store', 'store')->name('district.store');
+        Route::get('/district/edit/{id}', 'edit')->name('district.edit');
+        Route::post('/district/update/{id}', 'update')->name('district.update');
         Route::get('/district/destroy/{id}', 'destroy')->name('district.destroy');
     });
 });
