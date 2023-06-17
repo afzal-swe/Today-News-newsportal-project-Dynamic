@@ -74,4 +74,13 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+//__ Sub-District Page Route __//
+Route::middleware(['auth'])->group(function () {
+    Route::controller(SubdistrictController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/subdistrict', 'index')->name('subdistrict.index');
+    });
+});
+
+
 require __DIR__ . '/auth.php';
