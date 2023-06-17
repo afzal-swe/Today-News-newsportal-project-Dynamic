@@ -52,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
         // Backend Route ///
         Route::get('/subcategory', 'index')->name('subcategory.index');
         Route::post('/subcategory/store', 'store')->name('subcagegory.store');
+        Route::get('/subcategory/edit{id}', 'edit')->name('subcategory.edit');
+        Route::post('/subcategory/update{id}', 'update')->name('subcategory.update');
         Route::get('/subcategory/destroy/{id}', 'destroy')->name('subcategory.destroy');
     });
 });

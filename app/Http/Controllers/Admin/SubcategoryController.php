@@ -42,6 +42,37 @@ class SubcategoryController extends Controller
     }
     // End Category Store
 
+
+    // __Edit Subcategory Manage Function__ //
+    public function edit($id)
+    {
+        // $edit = DB::table('subcategories')->where('id', $id)->first();  
+        $edit = Subcategory::find($id);
+        $category = Category::all();
+
+        return view('admin.subcategory_section.edit', compact('edit', 'category'));
+    }
+    // End Subcategory Edit
+
+
+
+    // __Update Subcategory Manage Function__ //
+    public function update(Request $request)
+    {
+        $update = $request->id;
+
+        Subcategory::findOrFail($update)->update([
+            'category_id' => $request->category_id,
+            'subcategory_bn' => $request->subcategory_bn,
+            'subcategory_en' => $request->subcategory_en,
+        ]);
+
+        $notification = array('messege' => 'Subcategory Update Successfully !', 'alert-type' => "success");
+        return redirect()->route('subcategory.index')->with($notification);
+    }
+    // End Subcategory Update
+
+
     // __Delete Category Manage Function__ //
     public function destroy($id)
     {
