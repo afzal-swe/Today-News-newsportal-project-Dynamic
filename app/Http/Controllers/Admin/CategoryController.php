@@ -38,9 +38,21 @@ class CategoryController extends Controller
             'category_en' => $request->category_en,
         ]);
 
-        return redirect()->back();
+        $notification = array('messege' => 'Category Add Successfully !', 'alert-type' => "success");
+        return redirect()->back()->with($notification);
     }
     // End Category Store
+
+    // __Delete Category Manage Function__ //
+    public function destroy($id)
+    {
+
+        Category::destroy($id);
+
+        $notification = array('messege' => 'Successfully Delete!', 'alert-type' => "success");
+        return redirect()->back()->with($notification);
+    }
+    // End Category Delete
 
 
 }
