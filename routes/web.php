@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(CategoryController::class)->group(function () {
         // Backend Route ///
         Route::get('/category', 'index')->name('category.index');
+        Route::post('/category/store', 'store')->name('category.store');
     });
 });
 

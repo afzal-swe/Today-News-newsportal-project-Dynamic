@@ -61,54 +61,26 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Category
+                Categories
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Create Category</p>
-                </a>
-              </li>
               <li class="nav-item">
                 <a href="{{ route('category.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Category</p>
                 </a>
               </li>
-            </ul>
-          </li>
-          {{-- Category Section End --}}
-
-          {{-- Subcategory Section Start --}}
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Subcategory
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Create Subcategory</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Subcategory</p>
                 </a>
               </li>
             </ul>
           </li>
-           {{-- Subcategory Section End --}}
-
-
+          {{-- Category Section End --}}
           
           <li class="nav-header">LABELS</li>
           <li class="nav-item">

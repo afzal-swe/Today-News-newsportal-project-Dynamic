@@ -17,4 +17,30 @@ class CategoryController extends Controller
         $categoryData = Category::all();
         return view('admin.category_section.index', compact('categoryData'));
     }
+    // End Category index
+
+
+    // __Store Category Manage Function__ //
+    public function store(Request $request)
+    {
+        $request->validate([
+            'category_bn' => 'required|unique:categories|max:55',
+            'category_en' => 'required|unique:categories|max:55',
+        ]);
+
+        // $data=array();
+        // $data['category_bn'] =  $request->category_bn;
+        // $data['category_en'] =  $request->category_en;
+        // DB::table('categories')->insert($data);
+
+        Category::insert([
+            'category_bn' => $request->category_bn,
+            'category_en' => $request->category_en,
+        ]);
+
+        return redirect()->back();
+    }
+    // End Category Store
+
+
 }
