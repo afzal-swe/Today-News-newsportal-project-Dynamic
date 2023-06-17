@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,17 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/category/destroy/{id}', 'destroy')->name('category.destroy');
         Route::get('/category/edit/{id}', 'edit')->name('category.edit');
         Route::post('/category/update/{id}', 'update')->name('category.update');
+    });
+});
+
+
+//__ Subcategory Page Route __//
+Route::middleware(['auth'])->group(function () {
+
+    Route::controller(SubcategoryController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/subcategory', 'index')->name('subcategory.index');
+        Route::post('/subcategory/store', 'store')->name('subcagegory.store');
     });
 });
 
