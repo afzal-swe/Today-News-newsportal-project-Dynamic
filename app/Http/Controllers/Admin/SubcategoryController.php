@@ -42,4 +42,16 @@ class SubcategoryController extends Controller
     }
     // End Category Store
 
+    // __Delete Category Manage Function__ //
+    public function destroy($id)
+    {
+        // DB::table('subcategories')->where('id',$id)->delete();  // Delete Category with SQL
+
+        Subcategory::destroy($id);
+
+        $notification = array('messege' => 'Successfully Delete!', 'alert-type' => "success");
+        return redirect()->back()->with($notification);
+    }
+    // End Category Delete
+
 }
