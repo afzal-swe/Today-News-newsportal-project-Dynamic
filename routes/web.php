@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/category', 'index')->name('category.index');
         Route::post('/category/store', 'store')->name('category.store');
         Route::get('/category/destroy/{id}', 'destroy')->name('category.destroy');
+        Route::get('/category/edit/{id}', 'edit')->name('category.edit');
+        Route::post('/category/update/{id}', 'update')->name('category.update');
     });
 });
 
