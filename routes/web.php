@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\SubdistrictController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +57,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/subcategory/edit{id}', 'edit')->name('subcategory.edit');
         Route::post('/subcategory/update{id}', 'update')->name('subcategory.update');
         Route::get('/subcategory/destroy/{id}', 'destroy')->name('subcategory.destroy');
+    });
+});
+
+
+//__ District Page Route __//
+Route::middleware(['auth'])->group(function () {
+    Route::controller(DistrictController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/district', 'index')->name('district.index');
+        Route::post('/district/store', 'store')->name('district.store');
     });
 });
 

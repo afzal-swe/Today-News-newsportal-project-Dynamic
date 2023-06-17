@@ -81,6 +81,33 @@
             </ul>
           </li>
           {{-- Category Section End --}}
+
+
+          {{-- District Section Start --}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                District
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('district.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>District</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sub-District</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          {{-- District Section End --}}
           
           <li class="nav-header">LABELS</li>
           <li class="nav-item">
