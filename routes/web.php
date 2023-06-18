@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\SubdistrictController;
+use App\Http\Controllers\Admin\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 
 //__ Categories Page Route __//
@@ -83,6 +87,22 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/subdistrict/edit/{id}', 'edit')->name('district.edit');
         Route::post('/subdistrict/update/{id}', 'update')->name('subdistrict.update');
         Route::get('/subdistrict/destroy/{id}', 'destroy')->name('district.destroy');
+    });
+});
+
+
+//__ Post Page Route __//
+Route::middleware(['auth'])->group(function () {
+    Route::controller(PostController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/post', 'index')->name('post.index');
+        Route::get('/post/create', 'create')->name('post.create');
+        Route::post('/post/store', 'store')->name('post.store');
+
+
+        // Json Data multiple Dependency
+        Route::get('/get/subcat/{cat_id}', 'GetSubcat');
+        Route::get('/get/subdist/{dist_id}', 'GetSubDist');
     });
 });
 
