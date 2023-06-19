@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\PrayerController;
+use App\Http\Controllers\Admin\WebsiteController;
 
 
 /*
@@ -156,6 +157,16 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/notice/deactive/{id}', 'NoticeDeactive')->name('deactive.notices');
         Route::get('/notice/Active/{id}', 'NoticeActive')->name('active.notices');
+    });
+});
+
+
+//__ Website Setting Page Route __//
+Route::middleware(['auth'])->group(function () {
+    Route::controller(WebsiteController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/website/link', 'index')->name('website.index');
+        Route::post('/website/store', 'store')->name('website.store');
     });
 });
 
