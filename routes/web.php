@@ -181,6 +181,7 @@ Route::middleware(['auth'])->group(function () {
         // Backend Route ///
         Route::get('/photo/gallery', 'PhotoGallery')->name('photo.index');
         Route::post('/photo/store', 'PhotoStore')->name('photo.store');
+        Route::get('/photo/delete/{id}', 'PhotoDestroy')->name('photo.destroy');
     });
 });
 

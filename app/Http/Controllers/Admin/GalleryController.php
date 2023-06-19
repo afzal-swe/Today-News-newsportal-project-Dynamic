@@ -49,4 +49,18 @@ class GalleryController extends Controller
         return redirect()->back()->with($notification);
     }
     // End District Store
+
+    // Delete Photo function
+    public function PhotoDestroy($id)
+    {
+        $file = Photo::findOrFail($id);
+        $img = $file->photo; // Multi_image come to the database Fild name.
+        unlink($img);
+
+        Photo::findOrFail($id)->delete();
+
+        $notification = array('messege' => 'Photo Delete Successfully !!', 'alert-type' => "success");
+        return redirect()->back()->with($notification);
+    }
+    // End Photo function
 }
