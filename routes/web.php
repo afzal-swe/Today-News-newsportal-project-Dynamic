@@ -178,10 +178,14 @@ Route::middleware(['auth'])->group(function () {
 //__ Photo and Video Gallery Page Route __//
 Route::middleware(['auth'])->group(function () {
     Route::controller(GalleryController::class)->group(function () {
-        // Backend Route ///
+        // Backend Route Photos Gallery///
         Route::get('/photo/gallery', 'PhotoGallery')->name('photo.index');
         Route::post('/photo/store', 'PhotoStore')->name('photo.store');
         Route::get('/photo/delete/{id}', 'PhotoDestroy')->name('photo.destroy');
+
+        // Backend Route Videos Gallery///
+        Route::get('/video/gallery', 'VideoGallery')->name('video.index');
+        Route::post('/video/store', 'VideoStore')->name('video.store');
     });
 });
 

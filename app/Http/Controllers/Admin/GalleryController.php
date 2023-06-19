@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use App\Models\Photo;
+use App\Models\Video;
 
 class GalleryController extends Controller
 {
+
+    // Photos Gallery Section ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
     // __All Photos Manage Function__ //
     public function PhotoGallery()
     {
@@ -63,4 +67,44 @@ class GalleryController extends Controller
         return redirect()->back()->with($notification);
     }
     // End Photo function
+
+    // Photos Gallery Section ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+    // Video Gallery Section ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    // __All Photos Manage Function__ //
+    public function VideoGallery()
+    {
+        // $video = DB::table('videos')->get();  // Sql Query , Add DB All DATA
+        $video = Video::all();
+
+        return view('admin.gallery_section.videos', compact('video'));
+    }
+    // End Photos index
+
+
+    // __Store Photos Manage Function__ //
+    public function VideoStore(Request $request)
+    {
+        $request->validate([
+            'embed_code' => 'required',
+            'title' => 'required',
+            'type' => 'required',
+        ]);
+
+
+        Video::insert([
+            'title' => $request->title,
+            'type' => $request->type,
+            'embed_code' => $request->embed_code,
+
+
+        ]);
+        $notification = array('messege' => 'Video Upload Successfully !!', 'alert-type' => "success");
+        return redirect()->back()->with($notification);
+    }
+    // End District Store
+
+
+    // Video Gallery Section ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 }
