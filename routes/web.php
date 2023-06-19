@@ -140,11 +140,22 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/prayer/setting', 'prayer')->name('prayer.setting');
         Route::post('/prayer/update/{id}', 'update')->name('prayer.update');
 
+
+        //  Live Tv Route Start
         Route::get('/live', 'live')->name('livetv.setting');
         Route::post('/live/update/{id}', 'livetvUpdate')->name('livetv.update');
 
         Route::get('/active/live/{id}', 'ActiveLivetv')->name('active.livetv');
         Route::get('/deactive/live/{id}', 'DeactiveLivetv')->name('deactive.livetv');
+        //  Live Tv Route End
+
+
+        // Notice Route Start
+        Route::get('/notice/setting', 'notice')->name('notice.setting');
+        Route::post('/notice/update/{id}', 'NoticeUpdate')->name('notice.update');
+
+        Route::get('/notice/deactive/{id}', 'NoticeDeactive')->name('deactive.notices');
+        Route::get('/notice/Active/{id}', 'NoticeActive')->name('active.notices');
     });
 });
 

@@ -171,6 +171,12 @@
                   <p>Prayer Time</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('notice.setting') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Notice Setting</p>
+                </a>
+              </li>
             </ul>
           </li>
           {{-- Post Section End --}}
