@@ -16,8 +16,19 @@ class PostController extends Controller
     // __All Post Manage Function__ //
     public function index()
     {
+        // $post_data = DB::table('posts')
+        //     ->join('categories', 'posts.cat_id', 'categories.id')
+        //     ->join('subcategories', 'posts.subcat_id', 'subcategories.id')
+        //     ->join('districts', 'posts.dist_id', 'districts.id')
+        //     ->join('subdistricts', 'posts.subdist_id', 'subdistricts.id')->get();
 
-        $post_data = Post::all();
+        $post_data = DB::table('posts')
+            ->join('categories', 'posts.cat_id', 'categories.id')
+            ->join('subcategories', 'posts.subcat_id', 'subcategories.id')
+            ->select('posts.*', 'categories.category_bn', 'subcategories.subcategory_bn')
+            ->get();
+
+        // $post_data = Post::all();
 
         return view('admin.post_section.index', compact('post_data'));
     }
@@ -58,7 +69,7 @@ class PostController extends Controller
 
         $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
 
-        Image::make($img)->resize(430, 327)->save("image/post/" . $name_gen);
+        Image::make($img)->resize(500, 310)->save("image/post/" . $name_gen);
 
         $save_img_url = "image/post/" . $name_gen;
 
@@ -77,6 +88,7 @@ class PostController extends Controller
             'first_section' => $request->first_section,
             'first_section_thumbnail' => $request->first_section_thumbnail,
             'bigthumbnail' => $request->bigthumbnail,
+            'user_id' => Auth::user()->id,
             'post_date' => date('d-m-Y'),
             'post_month' => date('F'),
             'image' => $save_img_url,
