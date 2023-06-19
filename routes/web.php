@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\SubdistrictController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SocialController;
 
 
 /*
@@ -106,6 +107,16 @@ Route::middleware(['auth'])->group(function () {
         // Json Data multiple Dependency Ajax code route
         Route::get('/get/subcat/{cat_id}', 'GetSubcat');
         Route::get('/get/subdist/{dist_id}', 'GetSubDist');
+    });
+});
+
+
+//__ Social Setting Page Route __//
+Route::middleware(['auth'])->group(function () {
+    Route::controller(SocialController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/social/setting', 'social')->name('social.setting');
+        Route::post('/social/update/{id}', 'update')->name('social.update');
     });
 });
 
