@@ -100,6 +100,60 @@ class PostController extends Controller
     }
     // End Store  Post
 
+
+
+    // Edit Post Section Start
+    public function edit($id)
+    {
+        $category = DB::table('categories')->get();
+        $district = DB::table('districts')->get();
+
+        // $edit = Db::table('posts')->where('id',$id)->first();
+        $edit = Post::findOrFail($id);
+        return view('admin.post_section.edit', compact('edit', 'category', 'district'));
+    }
+    // Edit Post Section End
+
+
+    // Update Post Section Start
+    public function update(Request $request)
+    {
+        $update = $request->id;
+        // $oldimage = $request->file('oldimage');
+        $img = $request->file('image');
+
+        $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+
+        Image::make($img)->resize(500, 310)->save("image/post/" . $name_gen);
+
+        $save_img_url = "image/post/" . $name_gen;
+
+        Post::findOrFail($update)->update([
+            'cat_id' => $request->cat_id,
+            'subcat_id' => $request->subcat_id,
+            'dist_id' => $request->dist_id,
+            'subdist_id' => $request->subdist_id,
+            'title_en' => $request->title_en,
+            'title_bn' => $request->title_bn,
+            'details_en' => $request->details_en,
+            'details_bn' => $request->details_bn,
+            'tags_en' => $request->tags_en,
+            'tags_bn' => $request->tags_bn,
+            'headline' => $request->headline,
+            'first_section' => $request->first_section,
+            'first_section_thumbnail' => $request->first_section_thumbnail,
+            'bigthumbnail' => $request->bigthumbnail,
+            'image' => $save_img_url,
+            'created_at' => Carbon::now(),
+
+        ]);
+        $notification = array('messege' => 'Post Update Successfully !!', 'alert-type' => "success");
+        return redirect()->route('post.index')->with($notification);
+    }
+    // Update Post Section End
+
+
+    // Delete News Post function
     public function destroy($id)
     {
         $file = Post::findOrFail($id);
@@ -111,6 +165,7 @@ class PostController extends Controller
         $notification = array('messege' => 'Post Delete Successfully !!', 'alert-type' => "success");
         return redirect()->route('post.index')->with($notification);
     }
+    // End News Post function
 
 
 
