@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\SubdistrictController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SocialController;
+use App\Http\Controllers\Admin\SeoController;
 
 
 /*
@@ -117,6 +118,16 @@ Route::middleware(['auth'])->group(function () {
         // Backend Route ///
         Route::get('/social/setting', 'social')->name('social.setting');
         Route::post('/social/update/{id}', 'update')->name('social.update');
+    });
+});
+
+
+//__ SEO Setting Page Route __//
+Route::middleware(['auth'])->group(function () {
+    Route::controller(SeoController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/seo/setting', 'seo')->name('seo.setting');
+        Route::post('/seo/update/{id}', 'update')->name('seo.update');
     });
 });
 
