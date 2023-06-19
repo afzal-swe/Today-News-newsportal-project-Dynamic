@@ -51,7 +51,7 @@
                                         <td>{{ $row->website_name }}</td>
                                         <td>{{ $row->website_link }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('website.edit',$row->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('website.destroy',$row->id) }}" id="delete" class="btn btn-danger sm delete" title="Delete Data"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Website;
+use Illuminate\Support\Facades\DB;
 
 class WebsiteController extends Controller
 {
@@ -42,7 +43,6 @@ class WebsiteController extends Controller
     // End website Store
 
     // Website Delete Function Start
-
     public function destroy($id)
     {
         Website::destroy($id);
@@ -50,6 +50,32 @@ class WebsiteController extends Controller
         $notification = array('messege' => 'Successfully Delete!', 'alert-type' => "success");
         return redirect()->back()->with($notification);
     }
-
     // Website Delete Function End
+
+    // Website Edit Function Start
+    public function edit($id)
+    {
+        // $edit = DB::table('websites')->where('id', $id)->first();
+
+        $edit = Website::findOrFail($id);
+
+        return view('admin.website_section.edit', compact('edit'));
+    }
+    // Website edit Function End
+
+
+    // Website update Function Start
+    public function update(Request $request)
+    {
+
+        $update = $request->id;
+
+        Website::findOrFail($update)->update([
+            'website_name' => $request->website_name,
+            'website_link' => $request->website_link,
+        ]);
+        $notification = array('messege' => 'website Update Successfully !', 'alert-type' => "success");
+        return redirect()->route('website.index')->with($notification);
+    }
+    // Website update Function End
 }
