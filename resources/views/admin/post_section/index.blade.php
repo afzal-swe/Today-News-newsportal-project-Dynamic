@@ -57,7 +57,7 @@
                                         <td>{{ $row->post_date }}</td>
                                         <td>
                                             <a href="#" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                            <a href="#" id="delete" class="btn btn-danger sm delete" title="Delete Data"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="{{ route('post.destroy',$row->id) }}" id="delete" class="btn btn-danger sm delete" title="Delete Data"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

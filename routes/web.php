@@ -98,9 +98,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/post', 'index')->name('post.index');
         Route::get('/post/create', 'create')->name('post.create');
         Route::post('/post/store', 'store')->name('post.store');
+        Route::get('/post/delete/{id}', 'destroy')->name('post.destroy');
 
 
-        // Json Data multiple Dependency
+        // Json Data multiple Dependency Ajax code route
         Route::get('/get/subcat/{cat_id}', 'GetSubcat');
         Route::get('/get/subdist/{dist_id}', 'GetSubDist');
     });

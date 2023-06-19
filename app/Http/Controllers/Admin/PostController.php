@@ -100,6 +100,18 @@ class PostController extends Controller
     }
     // End Store  Post
 
+    public function destroy($id)
+    {
+        $file = Post::findOrFail($id);
+        $img = $file->image; // Multi_image come to the database Fild name.
+
+        unlink($img);
+        Post::findOrFail($id)->delete();
+
+        $notification = array('messege' => 'Post Delete Successfully !!', 'alert-type' => "success");
+        return redirect()->route('post.index')->with($notification);
+    }
+
 
 
 
