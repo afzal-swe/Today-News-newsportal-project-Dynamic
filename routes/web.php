@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SubdistrictController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\Admin\SeoController;
+use App\Http\Controllers\Admin\PrayerController;
 
 
 /*
@@ -128,6 +129,16 @@ Route::middleware(['auth'])->group(function () {
         // Backend Route ///
         Route::get('/seo/setting', 'seo')->name('seo.setting');
         Route::post('/seo/update/{id}', 'update')->name('seo.update');
+    });
+});
+
+
+//__ Prayer Setting Page Route __//
+Route::middleware(['auth'])->group(function () {
+    Route::controller(PrayerController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/prayer/setting', 'prayer')->name('prayer.setting');
+        Route::post('/prayer/update/{id}', 'update')->name('prayer.update');
     });
 });
 
