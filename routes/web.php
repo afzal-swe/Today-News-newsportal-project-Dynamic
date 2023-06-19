@@ -167,6 +167,7 @@ Route::middleware(['auth'])->group(function () {
         // Backend Route ///
         Route::get('/website/link', 'index')->name('website.index');
         Route::post('/website/store', 'store')->name('website.store');
+        Route::get('/website/delete/{id}', 'destroy')->name('website.destroy');
     });
 });
 

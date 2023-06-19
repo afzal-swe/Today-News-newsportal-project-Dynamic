@@ -40,4 +40,16 @@ class WebsiteController extends Controller
         return redirect()->back()->with($notification);
     }
     // End website Store
+
+    // Website Delete Function Start
+
+    public function destroy($id)
+    {
+        Website::destroy($id);
+
+        $notification = array('messege' => 'Successfully Delete!', 'alert-type' => "success");
+        return redirect()->back()->with($notification);
+    }
+
+    // Website Delete Function End
 }
