@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SocialController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\PrayerController;
 use App\Http\Controllers\Admin\WebsiteController;
+use App\Http\Controllers\Admin\GalleryController;
 
 
 /*
@@ -170,6 +171,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/website/edit/{id}', 'edit')->name('website.edit');
         Route::post('/website/update/{id}', 'update')->name('website.update');
         Route::get('/website/delete/{id}', 'destroy')->name('website.destroy');
+    });
+});
+
+
+//__ Photo and Video Gallery Page Route __//
+Route::middleware(['auth'])->group(function () {
+    Route::controller(GalleryController::class)->group(function () {
+        // Backend Route ///
+        Route::get('/photo/gallery', 'PhotoGallery')->name('photo.index');
+        Route::post('/photo/store', 'PhotoStore')->name('photo.store');
     });
 });
 

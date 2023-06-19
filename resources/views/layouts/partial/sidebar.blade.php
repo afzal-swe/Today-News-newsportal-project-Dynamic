@@ -186,6 +186,35 @@
             </ul>
           </li>
           {{-- Post Section End --}}
+
+
+          {{-- Gallery Section Start --}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Gallery
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('photo.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Photo Gallery</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Video Gallery</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          {{-- Gallery Section End --}}
           
           <li class="nav-header">LABELS</li>
           <li class="nav-item">
