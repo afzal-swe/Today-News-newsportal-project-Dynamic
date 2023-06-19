@@ -139,6 +139,12 @@ Route::middleware(['auth'])->group(function () {
         // Backend Route ///
         Route::get('/prayer/setting', 'prayer')->name('prayer.setting');
         Route::post('/prayer/update/{id}', 'update')->name('prayer.update');
+
+        Route::get('/live', 'live')->name('livetv.setting');
+        Route::post('/live/update/{id}', 'livetvUpdate')->name('livetv.update');
+
+        Route::get('/active/live/{id}', 'ActiveLivetv')->name('active.livetv');
+        Route::get('/deactive/live/{id}', 'DeactiveLivetv')->name('deactive.livetv');
     });
 });
 
