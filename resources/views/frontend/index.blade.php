@@ -474,11 +474,83 @@
                         </div>
                     </div>
                 </div>
-                <!-- Namaj Times -->
-                <div class="cetagory-title-03">নামাজের সময়সূচি </div>
-                Namaj Times count option here
-                <!-- Namaj Times -->
-                <div class="cetagory-title-03">পুরানো সংবাদ  </div>
+
+                 
+                <div class="cetagory-title-03">
+                    <!-- Namaj Times -->
+                        @php
+                            $prayers = DB::table('prayers')->first();
+                        @endphp
+                        @if (session()->get('lang')=='english')
+                            Prayer Times
+                        @else
+                        নামাজের সময়সূচি 
+                        @endif
+                        <!-- Namaj Times -->
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @if (session()->get('lang')=='english')
+                                    Fajr
+                                    @else
+                                    Fajr Bangla
+                                    @endif
+                                </th>
+                                <th>{{ $prayers->fajr }}</th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @if (session()->get('lang')=='english')
+                                    dhuhr
+                                    @else
+                                    dhuhr Bangla
+                                    @endif
+                                </th>
+                                <th>{{ $prayers->dhuhr }}</th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @if (session()->get('lang')=='english')
+                                    asr
+                                    @else
+                                    asr Bangla
+                                    @endif
+                                </th>
+                                <th>{{ $prayers->asr }}</th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @if (session()->get('lang')=='english')
+                                    maghrib
+                                    @else
+                                    maghrib Bangla
+                                    @endif
+                                </th>
+                                <th>{{ $prayers->maghrib }}</th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @if (session()->get('lang')=='english')
+                                    isha
+                                    @else
+                                    isha Bangla
+                                    @endif
+                                </th>
+                                <th>{{ $prayers->isha }}</th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @if (session()->get('lang')=='english')
+                                    jummah
+                                    @else
+                                    jummah Bangla
+                                    @endif
+                                </th>
+                                <th>{{ $prayers->jummah }}</th>
+                            </tr>
+                        </table>
+                </div>
+
                 <form action="" method="post">
                     <div class="old-news-date">
                        <input type="text" name="from" placeholder="From Date" required="">

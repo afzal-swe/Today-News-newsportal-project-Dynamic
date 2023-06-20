@@ -204,9 +204,29 @@
 					<div class="date">
 						<ul>
                             <script type="text/javascript" src="http://bangladate.appspot.com/index2.php"></script>
-							<li><i class="fa fa-map-marker" aria-hidden="true"></i>  ঢাকা </li>
-							<li><i class="fa fa-calendar" aria-hidden="true"></i> {{ bn_date(date('d M Y, l, h:i:s a')) }} </li>
-							<li><i class="fa fa-clock-o" aria-hidden="true"></i> আপডেট ৫ মিনিট আগে</li>
+							<li><i class="fa fa-map-marker" aria-hidden="true"></i> 
+                                @if (session()->get('lang')=='bangla')
+                                ঢাকা
+                                @else
+                                Dhaka
+                                @endif
+                                </li>
+							<li><i class="fa fa-calendar" aria-hidden="true"></i> 
+
+                                @if (session()->get('lang')=='bangla')
+                                {{ bn_date(date('d M Y, l, h:i:s a')) }} 
+                                @else
+                                {{ (date('d M Y, l, h:i:s a')) }}
+                                @endif
+                            </li>
+
+							<li><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                @if (session()->get('lang')=='bangla')
+                                আপডেট ৫ মিনিট আগে
+                                @else
+                                Updated 5 minutes ago
+                                @endif
+                            </li>
 						</ul>
 						
 					</div>
