@@ -23,7 +23,8 @@ class WebsiteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'website_name' => 'required|unique:websites|max:100',
+            'website_name_bn' => 'required|unique:websites|max:100',
+            'website_name_en' => 'required|unique:websites|max:100',
             'website_link' => 'required|unique:websites|max:100',
         ]);
 
@@ -33,7 +34,8 @@ class WebsiteController extends Controller
         // DB::table('categories')->insert($data);
 
         Website::insert([
-            'website_name' => $request->website_name,
+            'website_name_bn' => $request->website_name_bn,
+            'website_name_en' => $request->website_name_en,
             'website_link' => $request->website_link,
         ]);
 
@@ -71,7 +73,8 @@ class WebsiteController extends Controller
         $update = $request->id;
 
         Website::findOrFail($update)->update([
-            'website_name' => $request->website_name,
+            'website_name_bn' => $request->website_name_bn,
+            'website_name_en' => $request->website_name_en,
             'website_link' => $request->website_link,
         ]);
         $notification = array('messege' => 'website Update Successfully !', 'alert-type' => "success");

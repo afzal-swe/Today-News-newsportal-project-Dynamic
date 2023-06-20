@@ -38,7 +38,8 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Website Name</th>
+                                    <th>Website Name Bangla</th>
+                                    <th>Website Name English</th>
                                     <th>Website Link</th>
                                     <th>Action</th>
                                 </tr>
@@ -48,7 +49,8 @@
                                 @foreach ($websiteinfo as $key=>$row)
                                     <tr>
                                         <td>{{++$key}}</td>
-                                        <td>{{ $row->website_name }}</td>
+                                        <td>{{ $row->website_name_bn }}</td>
+                                        <td>{{ $row->website_name_en }}</td>
                                         <td>{{ $row->website_link }}</td>
                                         <td>
                                             <a href="{{ route('website.edit',$row->id) }}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
@@ -84,9 +86,19 @@
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label for="">Website Name <span class="text-danger">*</span></label>
-                            <input type="text" name="website_name" class="form-control @error('website_name') is-invalid @enderror " placeholder="Website Name" value="{{old('website_name')}}" required>
+                            <label for="">Website Name Bangla<span class="text-danger">*</span></label>
+                            <input type="text" name="website_name_bn" class="form-control @error('website_name') is-invalid @enderror " placeholder="Website Name Bangla" value="{{old('website_name')}}" required>
                             @error('website_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Website Name English<span class="text-danger">*</span></label>
+                            <input type="text" name="website_name_en" class="form-control @error('website_name_en') is-invalid @enderror " placeholder="Website Name English" value="{{old('website_name_en')}}" required>
+                            @error('website_name_en')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

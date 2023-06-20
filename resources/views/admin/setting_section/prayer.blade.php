@@ -45,38 +45,74 @@
                                         @csrf
                     
                                         <div class="card-body">
+
+                                          <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Fajr</label>
+                                                <input type="text" name="fajr_en" class="form-control" value="{{ $prayer->fajr_en }}" required> 
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputPassword1">ফজর</label>
+                                                <input type="text" name="fajr_bn" class="form-control" value="{{ $prayer->fajr_bn }}" required> 
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Johor</label>
+                                                <input type="text" name="dhuhr_en" class="form-control" value="{{ $prayer->dhuhr_en }}" required> 
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputPassword1">জোহুর</label>
+                                                <input type="text" name="dhuhr_bn" class="form-control" value="{{ $prayer->dhuhr_bn }}" required> 
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Asor</label>
+                                                <input type="text" name="asr_en" class="form-control" value="{{ $prayer->asr_en }}" required> 
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputPassword1">আসর</label>
+                                                <input type="text" name="asr_bn" class="form-control" value="{{ $prayer->asr_en }}" required> 
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Maghrib</label>
+                                                <input type="text" name="maghrib_en" class="form-control" value="{{ $prayer->maghrib_en }}" required> 
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputPassword1">মাগরিব</label>
+                                                <input type="text" name="maghrib_bn" class="form-control" value="{{ $prayer->maghrib_bn }}" required> 
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Isha</label>
+                                                <input type="text" name="isha_en" class="form-control" value="{{ $prayer->isha_en }}" required> 
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputPassword1">ইশা</label>
+                                                <input type="text" name="isha_bn" class="form-control" value="{{ $prayer->isha_bn }}" required> 
+                                            </div>
+                                          </div>
+
+                                          <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Jummah</label>
+                                                <input type="text" name="jummah_en" class="form-control" value="{{ $prayer->jummah_en }}" required> 
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputPassword1">জুম্মাহ</label>
+                                                <input type="text" name="jummah_bn" class="form-control" value="{{ $prayer->jummah_bn }}" required> 
+                                            </div>
+                                          </div>
+                                        
                     
-                                            <div class="form-group">
-                                                <label for="">Fajr</label>
-                                                <input type="text" name="fajr" class="form-control" value="{{ $prayer->fajr }}" required>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="">Johr</label>
-                                                <input type="text" name="dhuhr" class="form-control" value="{{ $prayer->dhuhr }}" required>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="">Asor</label>
-                                                <input type="text" name="asr" class="form-control" value="{{ $prayer->asr }}" required>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="">Maghrib</label>
-                                                <input type="text" name="maghrib" class="form-control" value="{{ $prayer->maghrib }}" required>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="">Isha</label>
-                                                <input type="text" name="isha" class="form-control" value="{{ $prayer->isha }}" required>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="">Jummah</label>
-                                                <input type="text" name="jummah" class="form-control" value="{{ $prayer->jummah }}" required>
-                                            </div>
-
-                                            
         
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary">Update</button>

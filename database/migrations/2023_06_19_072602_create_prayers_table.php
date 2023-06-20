@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('prayers', function (Blueprint $table) {
             $table->id();
-            $table->string('fajr')->nullable();
-            $table->string('dhuhr')->nullable();
-            $table->string('asr')->nullable();
-            $table->string('maghrib')->nullable();
-            $table->string('isha')->nullable();
-            $table->string('jummah')->nullable();
+            $table->string('fajr_en')->nullable();
+            $table->string('fajr_bn')->nullable();
+            $table->string('dhuhr_en')->nullable();
+            $table->string('dhuhr_bn')->nullable();
+            $table->string('asr_en')->nullable();
+            $table->string('asr_bn')->nullable();
+            $table->string('maghrib_en')->nullable();
+            $table->string('maghrib_bn')->nullable();
+            $table->string('isha_en')->nullable();
+            $table->string('isha_bn')->nullable();
+            $table->string('jummah_en')->nullable();
+            $table->string('jummah_bn')->nullable();
             $table->timestamps();
         });
     }

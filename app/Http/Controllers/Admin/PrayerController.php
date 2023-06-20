@@ -24,12 +24,18 @@ class PrayerController extends Controller
         $update = $request->id;
 
         Prayer::findOrFail($update)->update([
-            'fajr' => $request->fajr,
-            'dhuhr' => $request->dhuhr,
-            'asr' => $request->asr,
-            'maghrib' => $request->maghrib,
-            'isha' => $request->isha,
-            'jummah' => $request->jummah,
+            'fajr_en' => $request->fajr_en,
+            'fajr_bn' => $request->fajr_bn,
+            'dhuhr_en' => $request->dhuhr_en,
+            'dhuhr_bn' => $request->dhuhr_bn,
+            'asr_en' => $request->asr_en,
+            'asr_bn' => $request->asr_bn,
+            'maghrib_en' => $request->maghrib_en,
+            'maghrib_bn' => $request->maghrib_bn,
+            'isha_en' => $request->isha_en,
+            'isha_bn' => $request->isha_bn,
+            'jummah_en' => $request->jummah_en,
+            'jummah_bn' => $request->jummah_bn,
         ]);
         $notification = array('messege' => 'Namaz Time Update Successfully !!', 'alert-type' => "success");
         return redirect()->back()->with($notification);
@@ -91,7 +97,8 @@ class PrayerController extends Controller
         $update = $request->id;
 
         Notice::findOrFail($update)->update([
-            'notice' => $request->notice,
+            'notice_bn' => $request->notice_bn,
+            'notice_en' => $request->notice_en,
 
         ]);
         $notification = array('messege' => 'New Notice Update Successfully !!', 'alert-type' => "success");

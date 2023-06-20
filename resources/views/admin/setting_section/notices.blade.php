@@ -48,20 +48,27 @@
                     
                                         <div class="card-body">
                     
-                                            <div class="form-group">
-                                                <label for="">Notice</label>
-                                                <textarea type="text" name="notice" class="form-control" required> 
-                                                    {{ $notices->notice }}
+                                            <div class="row">
+                                              <div class="form-group col-md-6">
+                                                  <label for="exampleInputEmail1">Notice Bangla</label>
+                                                  <textarea type="text" name="notice_bn" class="form-control" required> 
+                                                    {{ $notices->notice_bn }}
                                                 </textarea>
-                                                @if ($notices->status == 1)
+                                              </div>
+                            
+                                              <div class="form-group col-md-6">
+                                                  <label for="exampleInputPassword1">Notice English</label>
+                                                  <textarea type="text" name="notice_en" class="form-control" required> 
+                                                    {{ $notices->notice_en }}
+                                                </textarea>
+                                              </div>
+                                              @if ($notices->status == 1)
                                                 <small class="text-success" >Now Notice are Active</small>
                                                 @else
                                                 <small class="text-danger" >Now Notice are Deactive</small>
                                                 @endif
-                                            </div>
-
-                                           
-        
+                                          </div>
+                                          
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary">Update</button>
                                             </div>

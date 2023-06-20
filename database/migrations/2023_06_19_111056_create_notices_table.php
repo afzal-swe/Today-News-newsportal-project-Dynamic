@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('notices', function (Blueprint $table) {
             $table->id();
-            $table->text('notice')->nullable();
+            $table->text('notice_bn')->nullable();
+            $table->text('notice_en')->nullable();
             $table->integer('status')->nullable()->default(0);
             $table->timestamps();
         });

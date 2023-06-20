@@ -492,61 +492,72 @@
                                 <th>
                                     @if (session()->get('lang')=='english')
                                     Fajr
+                                    <th>{{ $prayers->fajr_en }}</th>
                                     @else
-                                    Fajr Bangla
+                                    ফজর
+                                    <th>{{ $prayers->fajr_bn }}</th>
                                     @endif
                                 </th>
-                                <th>{{ $prayers->fajr }}</th>
                             </tr>
                             <tr>
                                 <th>
                                     @if (session()->get('lang')=='english')
-                                    dhuhr
+                                    Johuhr
+                                    <th>{{ $prayers->dhuhr_en }}</th>
                                     @else
-                                    dhuhr Bangla
+                                    জোহুর
+                                    <th>{{ $prayers->dhuhr_bn }}</th>
                                     @endif
                                 </th>
-                                <th>{{ $prayers->dhuhr }}</th>
+                                
                             </tr>
                             <tr>
                                 <th>
                                     @if (session()->get('lang')=='english')
                                     asr
+                                    <th>{{ $prayers->asr_en }}</th>
                                     @else
-                                    asr Bangla
+                                    আসর
+                                    <th>{{ $prayers->asr_bn }}</th>
                                     @endif
                                 </th>
-                                <th>{{ $prayers->asr }}</th>
+                                
                             </tr>
                             <tr>
                                 <th>
                                     @if (session()->get('lang')=='english')
                                     maghrib
+                                    <th>{{ $prayers->maghrib_en }}</th>
                                     @else
-                                    maghrib Bangla
+                                    মাগরিব
+                                    <th>{{ $prayers->maghrib_bn }}</th>
                                     @endif
                                 </th>
-                                <th>{{ $prayers->maghrib }}</th>
+                                
                             </tr>
                             <tr>
                                 <th>
                                     @if (session()->get('lang')=='english')
                                     isha
+                                    <th>{{ $prayers->isha_en }}</th>
                                     @else
-                                    isha Bangla
+                                    ইশা
+                                    <th>{{ $prayers->isha_bn }}</th>
                                     @endif
                                 </th>
-                                <th>{{ $prayers->isha }}</th>
+                                
                             </tr>
                             <tr>
                                 <th>
                                     @if (session()->get('lang')=='english')
                                     jummah
+                                    <th>{{ $prayers->jummah_en }}</th>
                                     @else
-                                    jummah Bangla
+                                    জুম্মাহ
+                                    <th>{{ $prayers->jummah_bn }}</th>
                                     @endif
                                 </th>
-                                <th>{{ $prayers->jummah }}</th>
+                                
                             </tr>
                         </table>
                 </div>
