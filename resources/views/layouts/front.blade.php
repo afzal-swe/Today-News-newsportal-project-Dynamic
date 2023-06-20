@@ -1,10 +1,22 @@
+
+@php
+    $category = DB::table('categories')->orderBy('id','ASC')->get();
+    $seo = DB::table('seos')->first();
+@endphp
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>News Smart</title>
+        <meta name="author" content="{{ $seo->meta_author}}">
+        <meta name="keyword" content="{{ $seo->meta_keyword}}">
+        <meta name="description" content="{{ $seo->meta_description}}">
+        <meta name="google-verification" content="{{ $seo->google_verification}}">
+
+        <title>{{ $seo->meta_title}}</title>
 
         <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('frontend/assets/css/menu.css') }}" rel="stylesheet">
@@ -41,39 +53,21 @@
 								<!-- Collection of nav links and other content for toggling -->
 								<div id="navbarCollapse" class="collapse navbar-collapse">
 									<ul class="nav navbar-nav">
-										<li><a href="#">Home</a></li>
-										<li><a href="#">Home</a></li>
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Home</a></li>
-												<li><a href="#">Home</a></li>
-											</ul>
-											</li>
-										<li><a href="#">Home</a></li>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown">Home<b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Home</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Home</a></li>
-										<li><a href="#">Home</a></li>
-									
-										
-										<li><a href="#" target="_blank">Home</a></li>
-										<li><a href="#" target="_blank">Home</a></li>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown">Home<b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Home</a></li>
-												<li><a href="#">Home</a></li>
-												
-												<li class="divider"></li>
-												<li><a href="#" rel="nofollow">Home</a></li>
-												<li><a href="#">Home</a></li>                           
-											</ul>
-										</li>
+
+                                        @foreach ($category as $row)
+                                        @php
+                                            $subcategory = DB::table('subcategories')->where('category_id',$row->id)->get();
+                                        @endphp
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ $row->category_bn }}</a>
+                                                <ul class="dropdown-menu">
+                                                    @foreach ($subcategory as $sub)
+                                                        <li><a href="#">{{ $sub->subcategory_bn }}</a></li>
+                                                    @endforeach
+                                            
+                                                </ul>
+                                            </li>
+                                        @endforeach
 									</ul>
 								</div>
 							</nav>											
@@ -264,12 +258,6 @@
 			</div>
 		</div>
 	</section>
-	
-	
-	
-	
-	
-	
 		<script src="{{ asset('frontend/assets/js/jquery.min.js') }}"></script>
 		<script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('frontend/assets/js/main.js') }}"></script>
