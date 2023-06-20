@@ -131,7 +131,7 @@
                             @if (session()->get('lang')=='bangla')
                             <li class="version"><a href="{{ route('lang.english') }}">English</a></li>
                             @else
-                            <li class="version"><a href="{{ route('lang.bangla') }}">Bangla</a></li>
+                            <li class="version"><a href="{{ route('lang.bangla') }}">বাংলা</a></li>
                             @endif
 							
 							<!-- login-start -->
@@ -213,10 +213,10 @@
                                 </li>
 							<li><i class="fa fa-calendar" aria-hidden="true"></i> 
 
-                                @if (session()->get('lang')=='bangla')
-                                {{ bn_date(date('d M Y, l, h:i:s a')) }} 
+                                @if (session()->get('lang')=='english')
+								{{ (date('d M Y, l, h:i:s a')) }}
                                 @else
-                                {{ (date('d M Y, l, h:i:s a')) }}
+                                {{ bn_date(date('d M Y, l, h:i:s a')) }}
                                 @endif
                             </li>
 
@@ -237,18 +237,74 @@
 
 	<!-- notice-start -->
 	 
+@php
+	$headline = DB::table('posts')
+		->join('categories','posts.cat_id','categories.id')
+		->join('subcategories','posts.subcat_id','subcategories.id')
+		->select('posts.*','categories.category_bn','subcategories.subcategory_bn')
+		->where('posts.headline',1)
+		->orderBy('id','DESC')
+		->limit(5)
+		->get();
+
+	$notice = DB::table('notices')->first();
+@endphp
+
     <section>
     	<div class="container-fluid">
 			<div class="row scroll">
 				<div class="col-md-2 col-sm-3 scroll_01 ">
-					শিরোনাম :
+					@if (session()->get('lang')=='english')
+						Headline :
+						@else
+						শিরোনাম :
+					@endif
 				</div>
+					
 				<div class="col-md-10 col-sm-9 scroll_02">
-					<marquee>wellcome to our website...</marquee>
+					<marquee>
+						@foreach ($headline as $row)
+						<a href="" style="color:white;">
+							@if (session()->get('lang')=='english')
+							*  {{ $row->title_en }}
+							@else
+							*  {{ $row->title_bn }}
+							@endif
+						</a>
+						@endforeach
+					</marquee>
 				</div>
 			</div>
     	</div>
-    </section>     
+    </section>  
+
+@if ($notice->status == 1)
+	<section>
+		<div class="container-fluid">
+			<div class="row scroll">
+				<div class="col-md-2 col-sm-3 scroll_01 " style="background-color: green">
+					@if (session()->get('lang')=='english')
+						Notice :
+						@else
+						নোটিশ :
+					@endif
+				</div>
+					
+				<div class="col-md-10 col-sm-9 scroll_02" style="background-color: red">
+					<marquee>
+					@if (session()->get('lang')=='english')
+					*  {{ $notice->notice_en }}
+					@else
+					*  {{ $notice->notice_bn }}
+					@endif
+					
+					</marquee>
+				</div>
+			</div>
+		</div>
+	</section>    
+@endif
+    
 
 	<!-- 1st-news-section-start -->	
 	
