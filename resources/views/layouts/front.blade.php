@@ -59,10 +59,24 @@
                                             $subcategory = DB::table('subcategories')->where('category_id',$row->id)->get();
                                         @endphp
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ $row->category_bn }}</a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    @if (session()->get('lang')=='english')
+                                                    {{ $row->category_en }}
+                                                    @else
+                                                    {{ $row->category_bn }}
+                                                    @endif 
+                                                </a>
                                                 <ul class="dropdown-menu">
                                                     @foreach ($subcategory as $sub)
-                                                        <li><a href="#">{{ $sub->subcategory_bn }}</a></li>
+                                                        <li><a href="#">
+                                                            @if (session()->get('lang')=='english')
+                                                            {{ $sub->subcategory_en }}
+                                                            @else
+                                                            {{ $sub->subcategory_bn }}
+                                                            @endif
+                                                            
+                                                            </a>
+                                                        </li>
                                                     @endforeach
                                             
                                                 </ul>
@@ -78,7 +92,12 @@
 					<div class="header-icon">
 						<ul>
 							<!-- version-start -->
-							<li class="version"><a href="#">English</a></li>
+                            @if (session()->get('lang')=='bangla')
+                            <li class="version"><a href="{{ route('lang.english') }}">English</a></li>
+                            @else
+                            <li class="version"><a href="{{ route('lang.bangla') }}">Bangla</a></li>
+                            @endif
+							
 							<!-- login-start -->
 						
 							<!-- search-start -->

@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\PrayerController;
 use App\Http\Controllers\Admin\WebsiteController;
 use App\Http\Controllers\Admin\GalleryController;
 
+use App\Http\Controllers\frontend\MultilanguageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -186,6 +188,17 @@ Route::middleware(['auth'])->group(function () {
         // Backend Route Videos Gallery///
         Route::get('/video/gallery', 'VideoGallery')->name('video.index');
         Route::post('/video/store', 'VideoStore')->name('video.store');
+    });
+});
+
+
+
+//__ Multi Language Route __//
+Route::middleware(['auth'])->group(function () {
+    Route::controller(MultilanguageController::class)->group(function () {
+        // Frontend Route Photos Gallery///
+        Route::get('/english/language', 'English')->name('lang.english');
+        Route::get('/bangla/language', 'Bangla')->name('lang.bangla');
     });
 });
 
