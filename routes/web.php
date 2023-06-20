@@ -194,13 +194,13 @@ Route::middleware(['auth'])->group(function () {
 
 
 //__ Multi Language Route __//
-Route::middleware(['auth'])->group(function () {
-    Route::controller(MultilanguageController::class)->group(function () {
-        // Frontend Route Photos Gallery///
-        Route::get('/english/language', 'English')->name('lang.english');
-        Route::get('/bangla/language', 'Bangla')->name('lang.bangla');
-    });
+
+Route::controller(MultilanguageController::class)->group(function () {
+    // Frontend Route Photos Gallery///
+    Route::get('/english/language', 'English')->name('lang.english');
+    Route::get('/bangla/language', 'Bangla')->name('lang.bangla');
 });
+
 
 
 require __DIR__ . '/auth.php';

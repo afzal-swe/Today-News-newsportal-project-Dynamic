@@ -47,8 +47,13 @@
                                         <div class="card-body">
                     
                                             <div class="form-group">
-                                                <label for="">Website Name</label>
-                                                <input type="text" name="website_name" class="form-control" value="{{ $edit->website_name }}" required>
+                                                <label for="">Website Name Bangla</label>
+                                                <input type="text" name="website_name_bn" class="form-control" value="{{ $edit->website_name_bn }}" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="">Website Name English</label>
+                                                <input type="text" name="website_name_en" class="form-control" value="{{ $edit->website_name_en }}" required>
                                             </div>
                     
                                             <div class="form-group">

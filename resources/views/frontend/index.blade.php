@@ -139,7 +139,13 @@
                 @if ($tv->status==1)
                     
                     <!-- youtube-live-start -->	
-                    <div class="cetagory-title-03">লাইভ টিভি </div>
+                    <div class="cetagory-title-03">
+                        @if (session()->get('lang')=='english')
+                        Live TV
+                        @else
+                        লাইভ টিভি 
+                        @endif 
+                    </div>
                     <div class="photo">
                         <div class="embed-responsive embed-responsive-16by9 embed-responsive-item" style="margin-bottom:5px;">
                             {!! $tv->embed_code !!}
@@ -573,32 +579,36 @@
                </form>
                <!-- news -->
                <br><br><br><br><br>
-               <div class="cetagory-title-04"> গুরুত্বপূর্ণ ওয়েবসাইট </div>
+               <div class="cetagory-title-04">
+                
+                @if (session()->get('lang')=='english')
+                    Importendt Website
+                @else
+                    গুরুত্বপূর্ণ ওয়েবসাইট
+                @endif 
+
+                </div>
+
+                @php
+                    $website = DB::table('websites')->get();
+                @endphp
+
                <div class="">
-                   <div class="news-title-02">
-                       <h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-                   </div>
-                   <div class="news-title-02">
-                       <h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-                   </div>
-                   <div class="news-title-02">
-                       <h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-                   </div>
-                   <div class="news-title-02">
-                       <h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-                   </div>
-                   <div class="news-title-02">
-                       <h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-                   </div>
-                   <div class="news-title-02">
-                       <h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-                   </div>
-                   <div class="news-title-02">
-                       <h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-                   </div>
-                   <div class="news-title-02">
-                       <h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-                   </div>
+                    @foreach ($website as $row)
+                        <div class="news-title-02">
+                            <h4 class="heading-03">
+                                <a href="{{ $row->website_link }}" target="_blank"><i class="fa fa-check" aria-hidden="true"></i> 
+                                        
+                                    @if (session()->get('lang')=='english')
+                                        {{ $row->website_name_en }}
+                                    @else
+                                    {{ $row->website_name_bn }}
+                                    @endif 
+    
+                                </a>
+                            </h4>
+                        </div>
+                    @endforeach
                </div>
 
             </div>
