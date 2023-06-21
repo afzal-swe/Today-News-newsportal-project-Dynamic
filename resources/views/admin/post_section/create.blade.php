@@ -41,12 +41,12 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Title Bangla</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="title_bn" placeholder="Title Bangla">
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="title_bn" placeholder="Title Bangla" required>
                         </div>
       
                         <div class="form-group col-md-6">
                             <label for="exampleInputPassword1">Title English</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="title_en" placeholder="Title English">
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="title_en" placeholder="Title English" required>
                         </div>
                     </div>
                     {{-- Title Section End --}}
@@ -101,12 +101,12 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Tags Bangla</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="tags_bn" placeholder="Tags Bangla">
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="tags_bn" placeholder="Tags Bangla" required>
                         </div>
       
                         <div class="form-group col-md-6">
                             <label for="exampleInputPassword1">Tags English</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="tags_en" placeholder="Tags English">
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="tags_en" placeholder="Tags English" required>
                         </div>
                     </div>
                     {{-- Tags Section End --}}
@@ -116,12 +116,12 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Detailos Bangla</label>
-                            <textarea class="form-control" name="details_bn" id="summernote" cols="30" rows="4"></textarea>
+                            <textarea class="form-control" name="details_bn" id="summernote" cols="30" rows="4" required></textarea>
                         </div>
       
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Detailos English</label>
-                            <textarea class="form-control textarea" name="details_en" cols="30" rows="4"></textarea>
+                            <textarea class="form-control textarea" name="details_en" cols="30" rows="4" required></textarea>
                         </div>
                     </div>
                     {{-- Discription Section End --}}
