@@ -43,4 +43,12 @@ class UserRoleController extends Controller
         $notification = array('messege' => 'Successfully Writer Created !!', 'alert-type' => "success");
         return redirect()->back()->with($notification);
     }
+
+    public function destroy($id)
+    {
+        User::destroy($id);
+
+        $notification = array('messege' => 'User Delete Successfully !', 'alert-type' => "success");
+        return redirect()->back()->with($notification);
+    }
 }
