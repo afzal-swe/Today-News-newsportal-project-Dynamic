@@ -30,33 +30,8 @@
             </a>
           </li>
 
-          {{-- Categories Section Start --}}
-          {{-- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Categories
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Create Categories</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Categories</p>
-                </a>
-              </li>
-            </ul>
-          </li> --}}
-          {{-- Categories Section End --}}
-
           {{-- Category Section Start --}}
+          @if (Auth::user()->category==1)
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -80,10 +55,13 @@
               </li>
             </ul>
           </li>
+          
+          @endif
           {{-- Category Section End --}}
 
 
           {{-- District Section Start --}}
+          @if (Auth::user()->district==1)
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -107,10 +85,12 @@
               </li>
             </ul>
           </li>
+          @endif
           {{-- District Section End --}}
 
 
           {{-- Post Section Start --}}
+          @if (Auth::user()->post==1)
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -134,10 +114,12 @@
               </li>
             </ul>
           </li>
+          @endif
           {{-- Post Section End --}}
 
 
           {{-- Post Section Start --}}
+          @if (Auth::user()->setting==1)
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -185,10 +167,12 @@
               </li>
             </ul>
           </li>
+          @endif
           {{-- Post Section End --}}
 
 
           {{-- Gallery Section Start --}}
+          @if (Auth::user()->gallery==1)
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -214,6 +198,7 @@
               </li>
             </ul>
           </li>
+          @endif
           {{-- Gallery Section End --}}
 
           {{-- Advertisement Section Start --}}
@@ -240,6 +225,7 @@
           {{-- Gallery Section End --}}
 
           {{-- User Role Section Start --}}
+          @if (Auth::user()->role==1)
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -257,6 +243,7 @@
               </li>
             </ul>
           </li>
+          @endif
           {{-- Gallery Section End --}}
           
           <li class="nav-header">LABELS</li>
