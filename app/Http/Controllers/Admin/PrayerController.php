@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Prayer;
 use App\Models\Livetv;
 use App\Models\Notice;
+use App\Models\Setting;
+use Intervention\Image\Facades\Image;
 
 class PrayerController extends Controller
 {
@@ -123,4 +125,45 @@ class PrayerController extends Controller
     }
     // Notice Active and Deactive Function End :::::::::::::::::::::::::::::::::::::::::::::::::::
     // Notice Route End
+
+
+    // Website Setting Route Start
+    public function WebsiteSetting()
+    {
+        $setting = Setting::first();
+
+        return view('admin.setting_section.website_setting', compact('setting'));
+    }
+    public function WebsiteUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'address_en' => 'required',
+            'address_bn' => 'required',
+            'phone_en' => 'required',
+            'phone_bn' => 'required',
+            'email' => 'required',
+        ]);
+
+        $data = array();
+        $data['address_en'] = $request->address_en;
+        $data['address_bn'] = $request->address_bn;
+        $data['phone_en'] = $request->phone_en;
+        $data['phone_bn'] = $request->phone_bn;
+        $data['email'] = $request->email;
+
+        $logo = $request->logo;
+        if ($logo) {
+            $image_one = uniqid() . '.' . $logo->getClientOriginalExtension();
+            Image::make($logo)->resize(320, 130)->save('image/logo/' . $image_one);
+            $data['logo'] = 'image/logo/' . $image_one;
+            DB::table('settings')->where('id', $id)->update($data);
+
+            $notification = array('messege' => 'Update With ImageSuccessfully !!', 'alert-type' => "success");
+            return redirect()->back()->with($notification);
+        }
+        DB::table('settings')->where('id', $id)->update($data);
+
+        $notification = array('messege' => 'Update Without Image Successfully !!', 'alert-type' => "success");
+        return redirect()->back()->with($notification);
+    }
 }

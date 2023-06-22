@@ -23,6 +23,8 @@
   $sub_category = DB::table('subcategories')->get();
   $post = DB::table('posts')->get();
   $ads = DB::table('ads')->get();
+  $user = DB::table('users')->get();
+  $website = DB::table('websites')->get();
 @endphp
     <!-- Main content -->
     <section class="content">
@@ -86,6 +88,68 @@
                 <i class="ion ion-pie-graph"></i>
               </div>
               <a href="{{ route('ads.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>0</h3>
+
+                <p>Photo Gallery</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>0<sup style="font-size: 20px"></sup></h3>
+
+                <p>Video Gallery</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ count($user) }}</h3>
+
+                <p>Writers</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="{{ route('writter.insert') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ count($website) }}</h3>
+
+                <p>Important Website</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="{{ route('website.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -606,6 +670,7 @@
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
+    
     <!-- /.content -->
   </div>
 @endsection

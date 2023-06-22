@@ -4,6 +4,7 @@
     $seo = DB::table('seos')->first();
     $social = DB::table('socials')->first();
 	$horizontal1 = DB::table('ads')->where('type',2)->first();
+	$setting = DB::table('settings')->first();
 @endphp
 
 
@@ -71,7 +72,13 @@
 			<div class="row">
 				<div class="col-xs-6 col-md-2 col-sm-4">
 					<div class="header_logo">
-						<a href=""><img src="{{ asset('frontend/assets/img/demo_logo.png') }}"></a> 
+						@if ($setting->logo==NULL)
+						@else
+						<a href="">
+							<img src="{{ asset($setting->logo) }}">
+						</a> 
+						@endif
+						
 					</div>
 				</div>              
 				<div class="col-xs-6 col-md-8 col-sm-8">
@@ -326,7 +333,13 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-4">
 						<div class="foot-logo">
-							<img src="{{ asset('frontend/assets/img/demo_logo.png') }}" style="height: 50px;" />
+							@if ($setting->logo==NULL)
+							@else
+							<a href="">
+								<img src="{{ asset($setting->logo) }}" style="height: 50px;" />
+							</a>
+							@endif
+							
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-4">
@@ -360,17 +373,46 @@
 			<div class="row">
 				<div class="col-md-4 col-sm-4">
 					<div class="editor-one">
-						Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is 
+						@if (session()->get('lang')=='english')
+							Address 
+							<hr>
+						@else
+							ঠিকানা 
+							<hr>
+						@endif
+						@if (session()->get('lang')=='english')
+							{{ $setting->address_en }}
+						@else
+							{{ $setting->address_bn }}
+						@endif
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4">
 					<div class="editor-two">
-					Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is 
+						{{-- @if ($setting->logo==NULL)
+						@else
+						<a href="">
+							<img src="{{ asset($setting->logo) }}" style="height: 50px;" />
+						</a>
+						@endif --}}
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4">
 					<div class="editor-three">
-						Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is 
+						@if (session()->get('lang')=='english')
+								Contact
+								<hr>	
+								@else
+								যোগাযোগ
+								<hr>	
+								@endif
+						@if (session()->get('lang')=='english')
+							{{ $setting->phone_en }}<br>
+							{{ $setting->email }}
+						@else
+							{{ $setting->phone_bn }}<br>
+							{{ $setting->email }}
+						@endif
 					</div>
 				</div>
 			</div>
@@ -389,8 +431,22 @@
 				<div class="col-md-6 col-sm-6">
 					<div class="btm-foot-menu">
 						<ul>
-							<li><a href="#">About US</a></li>
-							<li><a href="#">Contact US</a></li>
+							<li><a href="#">
+								@if (session()->get('lang')=='english')
+								About US	
+								@else
+								আমাদের সম্পর্ক 	
+								@endif
+								</a>
+							</li>
+							<li><a href="#">
+								@if (session()->get('lang')=='english')
+								Contact US	
+								@else
+								যোগাযোগ করুন 
+								@endif
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>

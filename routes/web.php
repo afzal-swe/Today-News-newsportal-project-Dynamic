@@ -147,7 +147,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/prayer/setting', 'prayer')->name('prayer.setting');
         Route::post('/prayer/update/{id}', 'update')->name('prayer.update');
 
-
         //  Live Tv Route Start
         Route::get('/live', 'live')->name('livetv.setting');
         Route::post('/live/update/{id}', 'livetvUpdate')->name('livetv.update');
@@ -156,13 +155,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/deactive/live/{id}', 'DeactiveLivetv')->name('deactive.livetv');
         //  Live Tv Route End
 
-
         // Notice Route Start
         Route::get('/notice/setting', 'notice')->name('notice.setting');
         Route::post('/notice/update/{id}', 'NoticeUpdate')->name('notice.update');
 
         Route::get('/notice/deactive/{id}', 'NoticeDeactive')->name('deactive.notices');
         Route::get('/notice/Active/{id}', 'NoticeActive')->name('active.notices');
+
+        // Website Setting Route Start
+        Route::get('/website/setting', 'WebsiteSetting')->name('website.setting');
+        Route::post('/website/setting/update/{id}', 'WebsiteUpdate')->name('websitesetting.update');
     });
 });
 
@@ -171,7 +173,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::controller(WebsiteController::class)->group(function () {
         // Backend Route ///
-        Route::get('/website/link', 'index')->name('website.index');
+        Route::get('/website', 'index')->name('website.index');
         Route::post('/website/store', 'store')->name('website.store');
         Route::get('/website/edit/{id}', 'edit')->name('website.edit');
         Route::post('/website/update/{id}', 'update')->name('website.update');
@@ -218,7 +220,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-//__ Ads Page Route __//
+//__ Writter Page Route __//
 Route::middleware(['auth'])->group(function () {
     //__ Ads Section Route __//
     Route::controller(UserRoleController::class)->group(function () {
