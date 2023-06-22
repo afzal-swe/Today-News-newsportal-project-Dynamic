@@ -167,39 +167,39 @@
                         <div class="row">
                             <div class="form-group col-lg-3">
                                 <label for="">Category</label>
-                                <input type="checkbox" name="category" class="form-control  " value="1"  required>
+                                <input type="checkbox" name="category" class="form-control  " aria-describedatBy="emailHelp"  value="1">
                                
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="">District</label>
-                                <input type="checkbox" name="district" class="form-control  " value="1"  required>
+                                <input type="checkbox" name="district" class="form-control  " aria-describedatBy="emailHelp"  value="1">
                                
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="">Posts</label>
-                                <input type="checkbox" name="post" class="form-control  " value="1"  required>
+                                <input type="checkbox" name="post" class="form-control  " aria-describedatBy="emailHelp"  value="1">
                                
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="">Setting</label>
-                                <input type="checkbox" name="setting" class="form-control  " value="1"  required>
+                                <input type="checkbox" name="setting" class="form-control  "  aria-describedatBy="emailHelp" value="1">
                                
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-lg-3">
                                 <label for="">Gallery</label>
-                                <input type="checkbox" name="gallery" class="form-control  " value="1"  required>
+                                <input type="checkbox" name="gallery" class="form-control  " aria-describedatBy="emailHelp" value="1" >
                                
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="">Ads</label>
-                                <input type="checkbox" name="ads" class="form-control  " value="1"  required>
+                                <input type="checkbox" name="ads" class="form-control  "aria-describedatBy="emailHelp"  value="1">
                                
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="">Role</label>
-                                <input type="checkbox" name="role" class="form-control  " value="1"  required>
+                                <input type="checkbox" name="role" class="form-control  " aria-describedatBy="emailHelp" value="1">
                                
                             </div>
                             {{-- <div class="form-group col-lg-3">

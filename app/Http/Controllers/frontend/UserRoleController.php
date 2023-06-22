@@ -59,21 +59,23 @@ class UserRoleController extends Controller
         return view('admin.role_section.edit', compact('edit'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $update = $request->id;
 
-        User::findOrFail($update)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'category' => $request->category,
-            'district' => $request->district,
-            'post' => $request->post,
-            'setting' => $request->setting,
-            'gallery' => $request->gallery,
-            'ads' => $request->ads,
-            'role' => $request->role,
-        ]);
+
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['category'] = $request->category;
+        $data['district'] = $request->district;
+        $data['post'] = $request->post;
+        $data['setting'] = $request->setting;
+        $data['gallery'] = $request->gallery;
+        $data['ads'] = $request->ads;
+        $data['role'] = $request->role;
+
+        DB::table('users')->where("id", $id)->update($data);
+
         $notification = array('messege' => 'User Update Successfully !', 'alert-type' => "success");
         return redirect()->route('writter.insert')->with($notification);
     }

@@ -48,67 +48,67 @@
                     
                                             <div class="form-group">
                                                 <label for="">Name<span class="text-danger">*</span></label>
-                                                <input type="text" name="name" class="form-control  " value="{{ $edit->name }}"  required>
+                                                <input type="text" name="name" class="form-control  " value="{{ $edit->name }}" >
                                                
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Email<span class="text-danger">*</span></label>
-                                                <input type="email" name="email" class="form-control  " value="{{ $edit->email }}" required>
+                                                <input type="email" name="email" class="form-control  " value="{{ $edit->email }}">
                                                
                                             </div>
                     
                                             <div class="row">
                                                 <div class="form-group col-lg-3">
                                                     <label for="">Category</label>
-                                                    <input type="checkbox" name="category" class="form-control  " value="1" @if ($edit->category==1) checked
+                                                    <input type="checkbox" name="category" class="form-control " aria-describedatBy="emailHelp"  value="1" @if ($edit->category==1) checked=""
                                                     
                                                         
-                                                    @endif required> 
+                                                    @endif> 
                                                     
                                                    
                                                 </div>
                                                 <div class="form-group col-lg-3">
                                                     <label for="">District</label>
-                                                    <input type="checkbox" name="district" class="form-control  " value="1"  @if ($edit->district) checked
+                                                    <input type="checkbox" name="district" class="form-control  " aria-describedatBy="emailHelp" value="1"  @if ($edit->district==1) checked=""
                                                         
-                                                    @endif  required>
+                                                    @endif  >
                                                    
                                                 </div>
                                                 <div class="form-group col-lg-3">
                                                     <label for="">Posts</label>
-                                                    <input type="checkbox" name="post" class="form-control  " value="1" @if ($edit->post) checked
+                                                    <input type="checkbox" name="post" class="form-control  " aria-describedatBy="emailHelp" value="1" @if ($edit->post==1) checked=""
                                                         
-                                                    @endif  required>
+                                                    @endif  >
                                                    
                                                 </div>
                                                 <div class="form-group col-lg-3">
                                                     <label for="">Setting</label>
-                                                    <input type="checkbox" name="setting" class="form-control  " value="1" @if ($edit->setting) checked
+                                                    <input type="checkbox" name="setting" class="form-control  " aria-describedatBy="emailHelp" value="1" @if ($edit->setting==1) checked=""
                                                         
-                                                    @endif  required>
+                                                    @endif  >
                                                    
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-3">
                                                     <label for="">Gallery</label>
-                                                    <input type="checkbox" name="gallery" class="form-control  " value="1" @if ($edit->gallery) checked
+                                                    <input type="checkbox" name="gallery" class="form-control  " aria-describedatBy="emailHelp" value="1" @if ($edit->gallery==1) checked=""
                                                         
-                                                    @endif required>
+                                                    @endif >
                                                    
                                                 </div>
                                                 <div class="form-group col-lg-3">
                                                     <label for="">Ads</label>
-                                                    <input type="checkbox" name="ads" class="form-control  " value="1" @if ($edit->ads) checked
+                                                    <input type="checkbox" name="ads" class="form-control  " aria-describedatBy="emailHelp" value="1" @if ($edit->ads==1) checked=""
                                                         
-                                                    @endif  required>
+                                                    @endif  >
                                                    
                                                 </div>
                                                 <div class="form-group col-lg-3">
                                                     <label for="">Role</label>
-                                                    <input type="checkbox" name="role" class="form-control  " value="1" @if ($edit->role) checked
+                                                    <input type="checkbox" name="role" class="form-control  " aria-describedatBy="emailHelp" value="1" @if ($edit->role==1) checked=""
                                                         
-                                                    @endif  required>
+                                                    @endif >
                                                    
                                                 </div>
                                                 {{-- <div class="form-group col-lg-3">

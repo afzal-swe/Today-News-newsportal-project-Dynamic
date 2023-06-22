@@ -217,6 +217,7 @@
           {{-- Gallery Section End --}}
 
           {{-- Advertisement Section Start --}}
+          @if (Auth::user()->ads==1)
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -234,6 +235,8 @@
               </li>
             </ul>
           </li>
+            
+          @endif
           {{-- Gallery Section End --}}
 
           {{-- User Role Section Start --}}
