@@ -215,6 +215,26 @@
             </ul>
           </li>
           {{-- Gallery Section End --}}
+
+          {{-- Advertisement Section Start --}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Advertisement
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('ads.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Ads</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          {{-- Gallery Section End --}}
           
           <li class="nav-header">LABELS</li>
           <li class="nav-item">
