@@ -51,4 +51,30 @@ class UserRoleController extends Controller
         $notification = array('messege' => 'User Delete Successfully !', 'alert-type' => "success");
         return redirect()->back()->with($notification);
     }
+
+    public function edit($id)
+    {
+
+        $edit = User::find($id);
+        return view('admin.role_section.edit', compact('edit'));
+    }
+
+    public function update(Request $request)
+    {
+        $update = $request->id;
+
+        User::findOrFail($update)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'category' => $request->category,
+            'district' => $request->district,
+            'post' => $request->post,
+            'setting' => $request->setting,
+            'gallery' => $request->gallery,
+            'ads' => $request->ads,
+            'role' => $request->role,
+        ]);
+        $notification = array('messege' => 'User Update Successfully !', 'alert-type' => "success");
+        return redirect()->route('writter.insert')->with($notification);
+    }
 }

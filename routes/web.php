@@ -224,6 +224,8 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(UserRoleController::class)->group(function () {
         Route::get('/writter/insert', 'insert')->name('writter.insert');
         Route::post('/writter/store', 'store')->name('writer.store');
+        Route::get('/writter/edit/{id}', 'edit')->name('user.edit');
+        Route::post('/writter/update/{id}', 'update')->name('writer.update');
         Route::get('/writter/delete/{id}', 'destroy')->name('user.destroy');
     });
 });
