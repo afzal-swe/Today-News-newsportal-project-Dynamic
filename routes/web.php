@@ -14,7 +14,9 @@ use App\Http\Controllers\Admin\WebsiteController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\AdsController;
 
+
 use App\Http\Controllers\frontend\MultilanguageController;
+use App\Http\Controllers\frontend\UserRoleController;
 
 
 /*
@@ -212,6 +214,16 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/ads', 'index')->name('ads.index');
         Route::post('/ads/store', 'store')->name('ads.store');
+    });
+});
+
+
+//__ Ads Page Route __//
+Route::middleware(['auth'])->group(function () {
+    //__ Ads Section Route __//
+    Route::controller(UserRoleController::class)->group(function () {
+        Route::get('/writter/insert', 'insert')->name('writter.insert');
+        Route::post('/writter/store', 'store')->name('writer.store');
     });
 });
 
