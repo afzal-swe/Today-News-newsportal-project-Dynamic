@@ -51,9 +51,9 @@
                                         <td>{{++$key}}</td>
                                         <td>
                                             @if ($row->type==2)
-                                            <img src="{{ asset($row->ads) }}" style="height: 70px; width:300px;">
+                                            <img src="{{ asset($row->ads) }}" style="height: 70px; width:300px;" alt="" />
                                             @else
-                                            <img src="{{ asset($row->ads) }}" style="height: 70px; width:80px;">
+                                            <img src="{{ asset($row->ads) }}" style="height: 70px; width:80px;" alt="" />
                                             @endif
                                         </td>
                                         <td>

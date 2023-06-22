@@ -56,8 +56,19 @@
                 
                 <!-- add-start -->	
                 <div class="row">
+                    @php
+                        $horizontal2 = DB::table('ads')->where('type',2)->skip(1)->first();
+                    @endphp
+
                     <div class="col-md-12 col-sm-12">
-                        <div class="add"><img src="{{ asset('frontend/assets/img/top-ad.jpg') }}" alt="" /></div>
+                        <div class="add">
+                            @if ($horizontal2==NULL)
+                            @else
+                            <a href="{{ $horizontal2->link }}" target="_blank">
+                                <img src="{{ asset( $horizontal2->ads) }}" alt="" />
+                            </a>
+                            @endif
+                        </div>
                     </div>
                 </div><!-- /.add-close -->	
                 
@@ -190,10 +201,20 @@
                 </div>					
             </div>
             <div class="col-md-3 col-sm-3">
+                @php
+                    $vertical = DB::table('ads')->where('type',1)->first();
+                @endphp
                 <!-- add-start -->	
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        <div class="sidebar-add"><img src="{{ asset('frontend/assets/img/add_01.jpg') }}" alt="" /></div>
+                        <div class="sidebar-add">
+                            @if ($vertical==NULL)
+                            @else 
+                            <a href="{{ $vertical->link }}" target="_blank">
+                                <img src="{{ asset($vertical->ads) }}" alt="" />
+                            </a>
+                            @endif
+                        </div>
                     </div>
                 </div><!-- /.add-close -->	
 
@@ -226,9 +247,18 @@
                 
                 <!-- add-start -->	
                 <div class="row">
+                    @php
+                        $vertical2 = DB::table('ads')->where('type',1)->skip(1)->first();
+                    @endphp
                     <div class="col-md-12 col-sm-12">
                         <div class="sidebar-add">
-                            <img src="{{ asset('frontend/assets/img/add_01.jpg') }}" alt="" />
+                            @if ($vertical2==NULL)
+                            @else 
+                            <a href="{{ $vertical2->link }}" target="_blank">
+                                <img src="{{ asset($vertical2->ads) }}" alt="" />
+                            </a>
+                            @endif
+                           
                         </div>
                     </div>
                 </div><!-- /.add-close -->	
@@ -428,11 +458,30 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
         </div>
         <!-- add-start -->	
         <div class="row">
+            @php
+                $horizontal3 = DB::table('ads')->where('type',2)->skip(2)->first();
+                $horizontal4 = DB::table('ads')->where('type',2)->skip(3)->first();
+            @endphp
             <div class="col-md-6 col-sm-6">
-                <div class="add"><img src="{{ asset('frontend/assets/img/top-ad.jpg') }}" alt="" /></div>
+                <div class="add">
+                    @if ($horizontal3==NULL)
+                    @else
+                    <a href="{{ $horizontal3->link }}" target="_blank">
+                        <img src="{{ asset($horizontal3->ads) }}" alt="" />
+                    </a>
+                    @endif
+                </div>
+                    
             </div>
             <div class="col-md-6 col-sm-6">
-                <div class="add"><img src="{{ asset('frontend/assets/img/top-ad.jpg') }}" alt="" /></div>
+                <div class="add">
+                    @if ($horizontal4==NULL)
+                    @else
+                    <a href="{{ $horizontal4->link }}" target="_blank">
+                        <img src="{{ asset( $horizontal4->ads ) }}" alt="" />
+                    </a>
+                    @endif
+                </div>
             </div>
         </div><!-- /.add-close -->	
         

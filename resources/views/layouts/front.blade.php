@@ -3,6 +3,7 @@
     $category = DB::table('categories')->orderBy('id','ASC')->get();
     $seo = DB::table('seos')->first();
     $social = DB::table('socials')->first();
+	$horizontal1 = DB::table('ads')->where('type',2)->first();
 @endphp
 
 
@@ -190,7 +191,12 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-					<div class="top-add"><img src="{{ asset('frontend/assets/img/top-ad.jpg') }}" alt="" /></div>
+					<div class="top-add">
+						@if($horizontal1==NULL)
+						@else
+						<a href="{{ $horizontal1->link }}" target="_blank"><img src="{{ asset($horizontal1->ads) }}" alt="" /></a>
+						@endif
+					</div>
 				</div>
 			</div>
 		</div>
