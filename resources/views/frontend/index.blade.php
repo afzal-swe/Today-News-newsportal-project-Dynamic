@@ -240,10 +240,18 @@
                 @endif
                 
                 <!-- facebook-page-start -->
-                <div class="cetagory-title-03">ফেসবুকে আমরা</div>
-                <div class="fb-root">
-                    facebook page here
-                </div><!-- /.facebook-page-close -->	
+                <div class="cetagory-title-03">
+                    @if (session()->get('lang')=='english')
+                    We are on Facebook
+                    @else
+                    ফেসবুকে আমরা
+                    @endif
+                    </div>
+                    <div id="fb-root"></div>
+
+                    <div class="fb-page" data-href="https://www.facebook.com/codeartist.IT" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/codeartist.IT" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/codeartist.IT">Code Artist.IT</a></blockquote></div>
+                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v17.0" nonce="99aqICqK"></script>
+                    <!-- /.facebook-page-close -->	
                 
                 <!-- add-start -->	
                 <div class="row">
