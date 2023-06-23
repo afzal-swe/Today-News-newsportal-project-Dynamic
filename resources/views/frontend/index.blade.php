@@ -35,11 +35,14 @@
                 </div>
                     <div class="row">
                         @foreach ($first_section as $row)
+                        @php
+                            $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                        @endphp
                             <div class="col-md-3 col-sm-3">
                                 <div class="top-news">
-                                    <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                                    <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                                     <h4 class="heading-02" style="height: 80px;">
-                                        <a href="#">
+                                        <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                         @if (session()->get('lang')=='english')
                                         {{ $row->title_en }}
                                         @else
@@ -100,11 +103,14 @@
                             </div>
 
                             <div class="row">
+                                @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                                @endphp
                                 <div class="col-md-6 col-sm-6">
                                     <div class="top-news">
-                                        <a href="#"><img src="{{ asset($first_cat_post->image) }}" alt="Notebook"></a>
+                                        <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($first_cat_post->image) }}" alt="Notebook"></a>
                                         <h4 class="heading-02">
-                                            <a href="#">
+                                            <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                                 @if (session()->get('lang')=='english')
                                                 {{ $first_cat_post->title_en }}
                                                 @else
@@ -117,9 +123,9 @@
                                 <div class="col-md-6 col-sm-6">
                                     @foreach ($first_cat_post_small as $row)
                                         <div class="image-title">
-                                            <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                                            <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                                             <h4 class="heading-03">
-                                                <a href="#">
+                                                <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                                     @if (session()->get('lang')=='english')
                                                     {{ $row->title_en }}
                                                     @else

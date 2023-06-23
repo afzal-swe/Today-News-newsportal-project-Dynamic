@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\AdsController;
 
 use App\Http\Controllers\frontend\MultilanguageController;
 use App\Http\Controllers\frontend\UserRoleController;
+use App\Http\Controllers\frontend\MultiPostController;
 
 
 /*
@@ -231,6 +232,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/writter/delete/{id}', 'destroy')->name('user.destroy');
     });
 });
+
+
+
+// Single Post
+
+Route::get('view-post/{id}/{slug}', [MultiPostController::class, 'singlePost']);
+
+
 
 
 

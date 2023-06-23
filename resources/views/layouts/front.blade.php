@@ -14,11 +14,16 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+		
         <meta name="author" content="{{ $seo->meta_author}}">
         <meta name="keyword" content="{{ $seo->meta_keyword}}">
         <meta name="description" content="{{ $seo->meta_description}}">
         <meta name="google-verification" content="{{ $seo->google_verification}}">
+		{{-- Social comments and share needed this meta with csrf token otherwoyes don't working ajax file  --}}
+		<meta name="csrf-token" content="{{ csrf_token() }}" >
+		@yield('meta')
 
+		
         <title>{{ $seo->meta_title}}</title>
 
         <link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
