@@ -15,6 +15,8 @@
                 <div class="row">
                     <div class="col-md-1 col-sm-1 col-lg-1"></div>
 
+                    {{-- Big Thumbnail Section Start --------------------------------------------------------------------------------------------}}
+                    
                     <div class="col-md-10 col-sm-10">
                         <div class="lead-news">
                             <div class="service-img"><a href="#"><img src="{{ asset($firstsectionbig->image) }}" alt="Notebook"></a></div>
@@ -31,13 +33,17 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- Big Thumbnail Section End --------------------------------------------------------------------------------------------}}
                     
                 </div>
+                    {{-- First Section Start --------------------------------------------------------------------------------------------------}}
+                    
                     <div class="row">
                         @foreach ($first_section as $row)
-                        @php
-                            $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
-                        @endphp
+                            @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                            @endphp
                             <div class="col-md-3 col-sm-3">
                                 <div class="top-news">
                                     <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
@@ -54,8 +60,9 @@
                                 </div>
                             </div>
                         @endforeach
-                  
                     </div>
+
+                    {{-- First Section End --------------------------------------------------------------------------------------------------}}
                 
                 <!-- add-start -->	
                 <div class="row">
@@ -77,6 +84,8 @@
                 
                 <!-- news-start -->
                 <div class="row">
+
+                    {{-- Secound Section First Block Start ----------------------------------------------------------------------------------------}}
                     @php
                         $first_cat = DB::table('categories')->first();
                         $first_cat_post = DB::table('posts')->where('cat_id',$first_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
@@ -90,7 +99,7 @@
                                     @else
                                     {{ $first_cat->category_bn }}
                                     @endif
-                                <a href="#">
+                                <a href="{{ route('more',$first_cat->id) }}">
                                     <span> 
                                         @if (session()->get('lang')=='english')
                                         More
@@ -103,14 +112,12 @@
                             </div>
 
                             <div class="row">
-                                @php
-                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
-                                @endphp
+                               
                                 <div class="col-md-6 col-sm-6">
                                     <div class="top-news">
-                                        <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($first_cat_post->image) }}" alt="Notebook"></a>
+                                        <a href="#"><img src="{{ asset($first_cat_post->image) }}" alt="Notebook"></a>
                                         <h4 class="heading-02">
-                                            <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
+                                            <a href="#">
                                                 @if (session()->get('lang')=='english')
                                                 {{ $first_cat_post->title_en }}
                                                 @else
@@ -122,6 +129,9 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     @foreach ($first_cat_post_small as $row)
+                                    @php
+                                    $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                                    @endphp
                                         <div class="image-title">
                                             <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                                             <h4 class="heading-03">
@@ -137,16 +147,18 @@
                                         </div>
                                     @endforeach  
                                 </div>
-                            
-
+                            </div>
                         </div>
                     </div>
-                </div>
-@php
-    $second_cat = DB::table('categories')->skip(1)->first();
-    $second_cat_post = DB::table('posts')->where('cat_id',$second_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
-    $first_cat_post_small = DB::table('posts')->where('cat_id',$second_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
-@endphp
+                    {{-- Secound Section First Block End ------------------------------------------------------------------------------------------}}
+
+
+                    {{-- Secound Section Secound Block Start ---------------------------------------------------------------------------------------}}
+                    @php
+                        $second_cat = DB::table('categories')->skip(1)->first();
+                        $second_cat_post = DB::table('posts')->where('cat_id',$second_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
+                        $first_cat_post_small = DB::table('posts')->where('cat_id',$second_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
+                    @endphp
                     <div class="col-md-6 col-sm-6">
                         <div class="bg-one">
                             <div class="cetagory-title">
@@ -156,7 +168,7 @@
                                 {{ $second_cat->category_bn }}
                                 @endif
 
-                                <a href="#">
+                                <a href="{{ route('more',$second_cat->id) }}">
                                     <span> 
                                         @if (session()->get('lang')=='english')
                                         More
@@ -169,6 +181,7 @@
                             </div>
 
                             <div class="row">
+                               
                                 <div class="col-md-6 col-sm-6">
                                     <div class="top-news">
                                         <a href="#"><img src="{{ asset($second_cat_post->image) }}" alt="Notebook"></a>
@@ -185,10 +198,13 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     @foreach ($first_cat_post_small as $row)
+                                    @php
+                                    $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                                    @endphp
                                     <div class="image-title">
-                                        <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                                        <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                                         <h4 class="heading-03">
-                                            <a href="#">
+                                            <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                                 @if (session()->get('lang')=='english')
                                                 {{ $row->title_en }}
                                                 @else
@@ -203,9 +219,10 @@
                             </div>
                         </div>
                     </div>
-
+                    {{-- Secound Section Secound Block End -----------------------------------------------------------------------------------------}}
                 </div>					
             </div>
+
             <div class="col-md-3 col-sm-3">
                 @php
                     $vertical = DB::table('ads')->where('type',1)->first();
@@ -225,6 +242,7 @@
                 </div><!-- /.add-close -->	
 
 
+               {{-- Live TV Section Start ----------------------------------------------------------------------------------------------------------}}
                 @php
                     $tv=DB::table('livetvs')->first();
                 @endphp
@@ -244,8 +262,9 @@
                         </div>
                     </div><!-- /.youtube-live-close -->	
                 @endif
+               {{-- Live TV Section End-------------------------------------------------------------------------------------------------------- --}}
                 
-                <!-- facebook-page-start -->
+                <!-- facebook-page-start------------------------------------------------------------------------------------------------------------->
                 <div class="cetagory-title-03">
                     @if (session()->get('lang')=='english')
                     We are on Facebook
@@ -257,7 +276,7 @@
 
                     <div class="fb-page" data-href="https://www.facebook.com/codeartist.IT" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/codeartist.IT" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/codeartist.IT">Code Artist.IT</a></blockquote></div>
                     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v17.0" nonce="99aqICqK"></script>
-                    <!-- /.facebook-page-close -->	
+                    <!-- /.facebook-page-close--------------------------------------------------------------------------------------------------------->	
                 
                 <!-- add-start -->	
                 <div class="row">
@@ -281,16 +300,21 @@
     </div>
 </section><!-- /.1st-news-section-close -->
 
+
+
 <!-- 2nd-news-section-start -->	
 
-@php
-    $thard_cat = DB::table('categories')->skip(2)->first();
-    $thard_cat_post = DB::table('posts')->where('cat_id',$thard_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
-    $thard_cat_post_small = DB::table('posts')->where('cat_id',$thard_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
-@endphp
+
 <section class="news-section">
     <div class="container-fluid">
         <div class="row">
+
+            {{-- Thard Section First Block Start ---------------------------------------------------------------------------------------------------}}
+            @php
+                $thard_cat = DB::table('categories')->skip(2)->first();
+                $thard_cat_post = DB::table('posts')->where('cat_id',$thard_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
+                $thard_cat_post_small = DB::table('posts')->where('cat_id',$thard_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
+            @endphp
             <div class="col-md-6 col-sm-6">
                 <div class="bg-one">
 
@@ -301,7 +325,7 @@
                         {{ $thard_cat->category_bn }}
                         @endif
 
-                        <a href="#">
+                        <a href="{{ route('more',$thard_cat->id) }}">
                             <span> 
                                 @if (session()->get('lang')=='english')
                                 More
@@ -330,10 +354,13 @@
                         </div>
                         <div class="col-md-6 col-sm-6">
                             @foreach ($thard_cat_post_small as $row)
+                            @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                            @endphp
                             <div class="image-title">
-                                <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                                <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                                 <h4 class="heading-03">
-                                    <a href="#">
+                                    <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                         @if (session()->get('lang')=='english')
                                         {{ $row->title_en }}
                                         @else
@@ -348,13 +375,16 @@
                     </div>
                 </div>
             </div>
+            {{-- Thard Section First Block End ---------------------------------------------------------------------------------------------------}}
 
 
-@php
-$fourth_cat = DB::table('categories')->skip(3)->first();
-$fourth_cat_post = DB::table('posts')->where('cat_id',$fourth_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
-$fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
-@endphp
+            {{-- Thard Section Secound Block Start ---------------------------------------------------------------------------------------------------}}
+
+            @php
+            $fourth_cat = DB::table('categories')->skip(3)->first();
+            $fourth_cat_post = DB::table('posts')->where('cat_id',$fourth_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
+            $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
+            @endphp
             <div class="col-md-6 col-sm-6">
                 <div class="bg-one">
                     <div class="cetagory-title">
@@ -364,7 +394,7 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
                         {{ $fourth_cat->category_bn }}
                         @endif
 
-                        <a href="#">
+                        <a href="{{ route('more',$fourth_cat->id) }}">
                             <span> 
                                 @if (session()->get('lang')=='english')
                                 More
@@ -393,10 +423,13 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
                         </div>
                         <div class="col-md-6 col-sm-6">
                             @foreach ($fourth_cat_post_small as $row)
+                            @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                            @endphp
                             <div class="image-title">
-                                <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                                <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                                 <h4 class="heading-03">
-                                    <a href="#">
+                                    <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                         @if (session()->get('lang')=='english')
                                         {{ $row->title_en }}
                                         @else
@@ -412,18 +445,20 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
 
                 </div>
             </div>
+            {{-- Thard Section Secound Block End ---------------------------------------------------------------------------------------------------}}
         </div>
         <!-- ******* -->
 
 
-        @php
-        $fifth_cat = DB::table('categories')->skip(4)->first();
-        $fifth_cat_post = DB::table('posts')->where('cat_id',$fifth_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
-        $fifth_cat_post_small = DB::table('posts')->where('cat_id',$fifth_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
-        @endphp
+        
 
-
+        {{-- Forth Section First Block Start ---------------------------------------------------------------------------------------------------}}
         <div class="row">
+            @php
+            $fifth_cat = DB::table('categories')->skip(4)->first();
+            $fifth_cat_post = DB::table('posts')->where('cat_id',$fifth_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
+            $fifth_cat_post_small = DB::table('posts')->where('cat_id',$fifth_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
+            @endphp
             <div class="col-md-6 col-sm-6">
                 <div class="bg-one">
                     <div class="cetagory-title-02">
@@ -433,7 +468,7 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
                         {{ $fifth_cat->category_bn }}
                         @endif
 
-                        <a href="#">
+                        <a href="{{ route('more',$fourth_cat->id) }}">
                             <span> 
                                 @if (session()->get('lang')=='english')
                                 More
@@ -469,12 +504,15 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
 
                         <div class="col-md-6 col-sm-6">
                             @foreach ($fifth_cat_post_small as $row)
+                            @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                            @endphp
                             <div class="image-title">
-                                <a href="#">
+                                <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                     <img src="{{ asset($row->image) }}" alt="Notebook">
                                 </a>
                                 <h4 class="heading-03">
-                                    <a href="#">
+                                    <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                         @if (session()->get('lang')=='english')
                                             {{ $row->title_en }}
                                             @else
@@ -490,14 +528,16 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
                     </div>
                 </div>
             </div>
+            {{-- Forth Section First Block End ---------------------------------------------------------------------------------------------------}}
 
 
+
+            {{-- Forth Section Secound Block Start ---------------------------------------------------------------------------------------------------}}
             @php
             $eight_cat = DB::table('categories')->skip(7)->first();
             $eight_cat_post = DB::table('posts')->where('cat_id',$eight_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
             $eight_cat_post_small = DB::table('posts')->where('cat_id',$eight_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
             @endphp
-
             <div class="col-md-6 col-sm-6">
                 <div class="bg-one">
                     <div class="cetagory-title-02">
@@ -507,7 +547,7 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
                         {{ $eight_cat->category_bn }}
                         @endif
 
-                        <a href="#">
+                        <a href="{{ route('more',$eight_cat->id) }}">
                             <span> 
                                 @if (session()->get('lang')=='english')
                                 More
@@ -539,12 +579,15 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
                         
                         <div class="col-md-6 col-sm-6">
                             @foreach ($eight_cat_post_small as $row)
+                            @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                            @endphp
                             <div class="image-title">
-                                <a href="#">
+                                <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                     <img src="{{ asset($row->image) }}" alt="Notebook">
                                 </a>
                                 <h4 class="heading-03">
-                                    <a href="#">
+                                    <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                         @if (session()->get('lang')=='english')
                                         {{ $row->title_en }}
                                         @else
@@ -558,7 +601,9 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
                     </div>
                 </div>
             </div>
+            {{-- Forth Section Secound Block End ---------------------------------------------------------------------------------------------------}}
         </div>
+        
         <!-- add-start -->	
         <div class="row">
             @php
@@ -592,18 +637,18 @@ $fourth_cat_post_small = DB::table('posts')->where('cat_id',$fourth_cat->id)->wh
 </section><!-- /.2nd-news-section-close -->
 
 
-@php
-$seven_cat = DB::table('categories')->skip(5)->first();
-$seven_cat_post = DB::table('posts')->where('cat_id',$seven_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
-$seven_cat_post_small = DB::table('posts')->where('cat_id',$seven_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
-$seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->where('bigthumbnail',NULL)->skip(3)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
-@endphp
-
-
 <!-- 3rd-news-section-start -->	
 <section class="news-section">
     <div class="container-fluid">
         <div class="row">
+
+            {{-- Fifth Section First Block Start ---------------------------------------------------------------------------------------------------}}
+            @php
+            $seven_cat = DB::table('categories')->skip(5)->first();
+            $seven_cat_post = DB::table('posts')->where('cat_id',$seven_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
+            $seven_cat_post_small = DB::table('posts')->where('cat_id',$seven_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
+            $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->where('bigthumbnail',NULL)->skip(3)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
+            @endphp
             <div class="col-md-9 col-sm-9">
                 <div class="cetagory-title">
                     @if (session()->get('lang')=='english')
@@ -612,7 +657,7 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                     {{ $seven_cat->category_bn }}
                     @endif
 
-                    <a href="#">
+                    <a href="{{ route('more',$seven_cat->id) }}">
                         <span> 
                             @if (session()->get('lang')=='english')
                             More
@@ -641,10 +686,13 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                     </div>
                     <div class="col-md-4 col-sm-4">
                         @foreach ($seven_cat_post_small as $row)
+                            @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                            @endphp
                         <div class="image-title">
-                            <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                            <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                             <h4 class="heading-03">
-                                <a href="#">
+                                <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                     @if (session()->get('lang')=='english')
                                     {{ $row->title_en }}
                                     @else
@@ -658,10 +706,13 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
 
                     <div class="col-md-4 col-sm-4">
                         @foreach ($seven_cat_post_small2 as $row)
+                            @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                            @endphp
                             <div class="image-title">
-                                <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                                <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                                 <h4 class="heading-03">
-                                    <a href="#">
+                                    <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                         @if (session()->get('lang')=='english')
                                         {{ $row->title_en }}
                                         @else
@@ -674,9 +725,11 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                         @endforeach
                     </div>
                 </div>
+                {{-- Fifth Section First Block End ---------------------------------------------------------------------------------------------------}}
                 <!-- ******* -->
                 <br />
                 <div class="row">
+                    {{-- Six Section First Block Start ---------------------------------------------------------------------------------------------------}}
                     <div class="row">
                         @php
                             $six_cat = DB::table('categories')->skip(6)->first();
@@ -691,7 +744,7 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                                         @else
                                         {{ $six_cat->category_bn }}
                                         @endif
-                                    <a href="#">
+                                    <a href="{{ route('more',$six_cat->id) }}">
                                         <span> 
                                             @if (session()->get('lang')=='english')
                                             More
@@ -720,10 +773,13 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         @foreach ($six_cat_post_small as $row)
+                                        @php
+                                            $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                                        @endphp
                                             <div class="image-title">
-                                                <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                                                <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                                                 <h4 class="heading-03">
-                                                    <a href="#">
+                                                    <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                                         @if (session()->get('lang')=='english')
                                                         {{ $row->title_en }}
                                                         @else
@@ -735,16 +791,19 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                                             </div>
                                         @endforeach  
                                     </div>
-                                
-    
+                                </div>
                             </div>
                         </div>
-                    </div>
-    @php
-        $eight_cat = DB::table('categories')->skip(8)->first();
-        $eight_cat_post = DB::table('posts')->where('cat_id',$eight_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
-        $eight_cat_post_small = DB::table('posts')->where('cat_id',$eight_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
-    @endphp
+                        {{-- Six Section First Block End ---------------------------------------------------------------------------------------------------}}
+
+
+                        {{-- Six Section Secound Block Start ---------------------------------------------------------------------------------------------------}}
+                        
+                        @php
+                            $eight_cat = DB::table('categories')->skip(8)->first();
+                            $eight_cat_post = DB::table('posts')->where('cat_id',$eight_cat->id)->where('bigthumbnail',1)->orderBy('id','DESC')->first(); // First Thumbnail Post SQL
+                            $eight_cat_post_small = DB::table('posts')->where('cat_id',$eight_cat->id)->where('bigthumbnail',NULL)->orderBy('id','DESC')->limit(3)->get(); // First Thumbnail Post SQL
+                        @endphp
                         <div class="col-md-6 col-sm-6">
                             <div class="bg-one">
                                 <div class="cetagory-title">
@@ -754,7 +813,7 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                                     {{ $eight_cat->category_bn }}
                                     @endif
     
-                                    <a href="#">
+                                    <a href="{{ route('more',$eight_cat->id) }}">
                                         <span> 
                                             @if (session()->get('lang')=='english')
                                             More
@@ -783,10 +842,13 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         @foreach ($eight_cat_post_small as $row)
+                                        @php
+                                            $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                                        @endphp
                                         <div class="image-title">
-                                            <a href="#"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
+                                            <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image) }}" alt="Notebook"></a>
                                             <h4 class="heading-03">
-                                                <a href="#">
+                                                <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                                     @if (session()->get('lang')=='english')
                                                     {{ $row->title_en }}
                                                     @else
@@ -801,9 +863,9 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                                 </div>
                             </div>
                         </div>
+                        {{-- Six Section Secound Block End ---------------------------------------------------------------------------------------------------}}
     
                     </div>					
-                
                 </div>
                 
                 <div class="row">
@@ -861,11 +923,14 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                         <div role="tabpanel" class="tab-pane in active" id="tab21">
                             <div class="news-titletab">
                                 @foreach ($latest as $row)
+                                        @php
+                                            $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                                        @endphp
                                 <div class="news-title-02">
                                    
                                     <h4 class="heading-03">
                                        
-                                        <a href="#">
+                                        <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                             @if (session()->get('lang')=='english')
                                                 {{$row->title_en}}
                                              @else
@@ -883,11 +948,14 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                         <div role="tabpanel" class="tab-pane fade" id="tab22">
                             <div class="news-titletab">
                                 @foreach ($favourite as $row)
+                                @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                                @endphp
                                 <div class="news-title-02">
                                    
                                     <h4 class="heading-03">
                                        
-                                        <a href="#">
+                                        <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                             @if (session()->get('lang')=='english')
                                                 {{$row->title_en}}
                                              @else
@@ -905,11 +973,14 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                         <div role="tabpanel" class="tab-pane fade" id="tab23">	
                             <div class="news-titletab">
                                 @foreach ($highest as $row)
+                                @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                                @endphp
                                 <div class="news-title-02">
                                    
                                     <h4 class="heading-03">
                                        
-                                        <a href="#">
+                                        <a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
                                             @if (session()->get('lang')=='english')
                                                 {{$row->title_en}}
                                              @else
@@ -1100,16 +1171,23 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                     @endif
                     
                     <div class="col-md-4 col-sm-4">
+                        
                         <div class="photo_list_bg">
                             @foreach ($small_phpto as $row)
+                            
                             <div class="photo_img photo_border active">
-                                <img src="{{ asset($row->photo) }}" alt="image" onclick="currentDiv(1)">
+                                
+                                <a href="">
+                                    <img src="{{ asset($row->photo) }}" alt="image" onclick="currentDiv(1)">
+                                </a>
                                 <div class="heading-03">
-                                   @if (session()->get('lang')=='english')
+                                   <a href="">
+                                    @if (session()->get('lang')=='english')
                                        {{ $row->title }}
                                     @else
                                     {{ $row->title }}
                                    @endif
+                                   </a>
                                 </div>
                             </div>
                             @endforeach 
@@ -1119,7 +1197,9 @@ $seven_cat_post_small2 = DB::table('posts')->where('cat_id',$seven_cat->id)->whe
                 </div>
 
                 <!--=======================================
-                Video Gallery clickable jquary  start
+                {{-- Video Gallery clickable jquary  @php
+                                $slug=preg_replace('/\s+/u','-',trim($row->title_bn));
+                                @endphp  start --}}
             ========================================-->
 
                         <script>

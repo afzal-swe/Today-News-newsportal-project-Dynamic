@@ -241,7 +241,10 @@ Route::get('view-post/{id}/{slug}', [MultiPostController::class, 'singlePost']);
 
 
 
-
+// Nav Route Section
+Route::get('post/sub-nav/{id}', [MultiPostController::class, 'subnav'])->name('subnab');
+// More Route Section
+Route::get('post/more/{id}', [MultiPostController::class, 'more'])->name('more');
 
 
 

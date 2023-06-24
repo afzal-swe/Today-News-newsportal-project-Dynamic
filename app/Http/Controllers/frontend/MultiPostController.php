@@ -20,4 +20,20 @@ class MultiPostController extends Controller
 
         return view('frontend.singpost', compact('post_data'));
     }
+
+
+
+    /// Nav Route 
+    public function subnav($id)
+    {
+        $posts = DB::table('posts')->where('subcat_id', $id)->orderBy('id', 'DESC')->paginate(12);
+        return view('frontend.nav', compact('posts'));
+    }
+
+    /// Nav Route 
+    public function more($id,)
+    {
+        $posts = DB::table('posts')->where('cat_id', $id)->orderBy('id', 'DESC')->paginate(12);
+        return view('frontend.nav', compact('posts'));
+    }
 }
