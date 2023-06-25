@@ -206,7 +206,7 @@
 					<div class="top-add">
 						@if($horizontal1==NULL)
 						@else
-						<a href="{{ $horizontal1->link }}" target="_blank"><img src="{{ asset($horizontal1->ads) }}" alt="" /></a>
+						<a href="{{ $horizontal1->link }}" target="_blank"><img src="{{ asset($horizontal1->image) }}" alt="" /></a>
 						@endif
 					</div>
 				</div>

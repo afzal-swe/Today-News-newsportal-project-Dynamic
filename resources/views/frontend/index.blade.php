@@ -75,7 +75,7 @@
                             @if ($horizontal2==NULL)
                             @else
                             <a href="{{ $horizontal2->link }}" target="_blank">
-                                <img src="{{ asset( $horizontal2->ads) }}" alt="" />
+                                <img src="{{ asset( $horizontal2->image) }}" alt="" />
                             </a>
                             @endif
                         </div>
@@ -234,7 +234,7 @@
                             @if ($vertical==NULL)
                             @else 
                             <a href="{{ $vertical->link }}" target="_blank">
-                                <img src="{{ asset($vertical->ads) }}" alt="" />
+                                <img src="{{ asset($vertical->image) }}" alt="" />
                             </a>
                             @endif
                         </div>
@@ -288,7 +288,7 @@
                             @if ($vertical2==NULL)
                             @else 
                             <a href="{{ $vertical2->link }}" target="_blank">
-                                <img src="{{ asset($vertical2->ads) }}" alt="" />
+                                <img src="{{ asset($vertical2->image) }}" alt="" />
                             </a>
                             @endif
                            
@@ -615,7 +615,7 @@
                     @if ($horizontal3==NULL)
                     @else
                     <a href="{{ $horizontal3->link }}" target="_blank">
-                        <img src="{{ asset($horizontal3->ads) }}" alt="" />
+                        <img src="{{ asset($horizontal3->immage) }}" alt="" />
                     </a>
                     @endif
                 </div>
@@ -626,7 +626,7 @@
                     @if ($horizontal4==NULL)
                     @else
                     <a href="{{ $horizontal4->link }}" target="_blank">
-                        <img src="{{ asset( $horizontal4->ads ) }}" alt="" />
+                        <img src="{{ asset( $horizontal4->immage ) }}" alt="" />
                     </a>
                     @endif
                 </div>

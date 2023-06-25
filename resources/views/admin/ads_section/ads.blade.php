@@ -38,33 +38,24 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Ads</th>
-                                    <th>Ads type</th>
-                                    <th>Link</th>
+                                    <th>Image</th>
+                                    <th>Type</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach ($ads as $key=>$row)
+                                @foreach ($all_ads as $key=>$row)
                                     <tr>
                                         <td>{{++$key}}</td>
+                                        <td><img src="{{ asset($row->image) }}" style="height: 70px; width:300px" alt=""></td>
                                         <td>
-                                            @if ($row->type==2)
-                                            <img src="{{ asset($row->ads) }}" style="height: 70px; width:300px;" alt="" />
+                                            @if ($row->type==1)
+                                                Horizontal
                                             @else
-                                            <img src="{{ asset($row->ads) }}" style="height: 70px; width:80px;" alt="" />
+                                                Vertical
                                             @endif
                                         </td>
-                                        <td>
-                                          @if ($row->type==2)
-                                            Horizontal
-                                          @else
-                                            Vertical
-                                          @endif
-                                        </td>
-                                        <td>{{ $row->link }}</td>
-                                       
                                         <td>
                                             <a href="#" class="btn btn-info sm" title="Edit Data"><i class="fas fa-edit"></i></a>
                                             <a href="#" id="delete" class="btn btn-danger sm delete" title="Delete Data"><i class="fas fa-trash-alt"></i></a>
@@ -87,7 +78,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Create New Ads</h4>
+              <h4 class="modal-title">Add Ads</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -100,7 +91,7 @@
 
                         <div class="form-group">
                             <label for="">Ads Link <span class="text-danger">*</span></label>
-                            <input type="text" name="link" class="form-control @error('link') is-invalid @enderror " placeholder="link" value="{{old('link')}}" required>
+                            <input type="text" name="link" class="form-control @error('link') is-invalid @enderror " placeholder="Ads Link" required>
                             @error('link')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -109,17 +100,18 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">Ads <span class="text-danger">*</span></label>
-                            <input type="file" name="ads" class="form-control  " required>
+                            <label for="">Image<span class="text-danger">*</span></label>
+                            <input type="file" name="image" class="form-control " required>
                             
                         </div>
 
                         <div class="form-group">
                             <label for="">Type<span class="text-danger">*</span></label>
                             <select name="type" id="" class="form-control" required>
-                              <option value="2">Horizontal</option>
-                              <option value="1">Vertical</option>
+                                <option value="1">Horizontal</option>
+                                <option value="2">Vertical</option>
                             </select>
+                            
                         </div>
 
 

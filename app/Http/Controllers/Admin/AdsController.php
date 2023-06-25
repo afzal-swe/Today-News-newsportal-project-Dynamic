@@ -10,43 +10,41 @@ use Intervention\Image\Facades\Image;
 
 class AdsController extends Controller
 {
-    public function index()
-    {
-        $ads = DB::table('ads')->get();
 
-        return view('admin.ads_section.index', compact('ads'));
+    function index()
+    {
+        $all_ads = DB::table('ads')->get();
+        return view('admin.ads_section.ads', compact('all_ads'));
     }
 
-    public function store(Request $request)
+    function store(Request $request)
     {
-        $request->validate([
-            'link' => 'required',
-            'ads' => 'required',
-        ]);
-
         $data = array();
         $data['link'] = $request->link;
-        if ($request->type == 2) {
-            $image = $request->ads;
 
-            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(970, 90)->save("image/ads/" . $name_gen);
-            $data['ads'] = "image/ads/" . $name_gen;
+        if ($request->type == 2) {
+            $img = $request->file('image');
+
+            $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+
+            Image::make($img)->resize(970, 90)->save("image/ads/" . $name_gen);
+            $data['image'] = "image/ads/" . $name_gen;
             $data['type'] = 2;
             DB::table('ads')->insert($data);
 
-            $notification = array('messege' => 'Horizontal Ads Successfully  Added!', 'alert-type' => "success");
+            $notification = array('messege' => 'Vartical Ads Successfully Added !!', 'alert-type' => "success");
             return redirect()->back()->with($notification);
         } else {
-            $image = $request->ads;
+            $img = $request->file('image');
 
-            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(500, 500)->save("image/ads/" . $name_gen);
-            $data['ads'] = "image/ads/" . $name_gen;
-            $data['type'] = 1;
+            $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+
+            Image::make($img)->resize(500, 500)->save("image/ads/" . $name_gen);
+            $data['image'] = "image/ads/" . $name_gen;
+            $data['type'] = 2;
             DB::table('ads')->insert($data);
 
-            $notification = array('messege' => 'vertical Ads Successfully  Added!', 'alert-type' => "success");
+            $notification = array('messege' => 'Horizontal Ads Successfully Added !!', 'alert-type' => "success");
             return redirect()->back()->with($notification);
         }
     }

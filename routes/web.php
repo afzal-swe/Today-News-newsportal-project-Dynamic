@@ -214,7 +214,6 @@ Route::controller(MultilanguageController::class)->group(function () {
 Route::middleware(['auth'])->group(function () {
     //__ Ads Section Route __//
     Route::controller(AdsController::class)->group(function () {
-
         Route::get('/ads', 'index')->name('ads.index');
         Route::post('/ads/store', 'store')->name('ads.store');
     });
